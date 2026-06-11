@@ -1,0 +1,127 @@
+@import '@fontsource/barlow-condensed/400.css';
+@import '@fontsource/barlow-condensed/700.css';
+@import '@fontsource/barlow-condensed/900.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #0D0D0D;
+    color: #F1F5F9;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1A1F2E;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #252D40;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A3E635;
+  }
+}
+
+@layer components {
+  .gully-card {
+    @apply bg-pavilion-dark border border-crease-line rounded-2xl p-4 shadow-card
+           transition-all duration-300 hover:border-lime-shot/30 hover:shadow-neon-lime;
+  }
+
+  .gully-btn {
+    @apply inline-flex items-center justify-center rounded-xl font-inter font-semibold
+           transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .gully-btn-primary {
+    @apply gully-btn bg-lime-shot text-pitch-black px-6 py-3
+           hover:bg-lime-shot/90 hover:shadow-neon-lime;
+  }
+
+  .gully-btn-danger {
+    @apply gully-btn bg-wicket-red text-white px-6 py-3
+           hover:bg-wicket-red/90 hover:shadow-neon-red;
+  }
+
+  .gully-btn-ghost {
+    @apply gully-btn bg-transparent text-off-white px-4 py-2
+           border border-crease-line hover:bg-crease-line/50;
+  }
+
+  .score-display {
+    @apply font-barlow font-black text-lime-shot tracking-tight;
+  }
+
+  .ball-indicator {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-xs font-mono font-bold
+           border-2 transition-all duration-200;
+  }
+
+  .over-tracker {
+    @apply flex gap-2 items-center;
+  }
+
+  /* Stadium scoreboard glow effect */
+  .scoreboard-glow {
+    box-shadow: 
+      0 0 10px rgba(163, 230, 53, 0.1),
+      inset 0 0 10px rgba(163, 230, 53, 0.05);
+  }
+
+  /* Glass effect for modals */
+  .glass {
+    @apply bg-pavilion-dark/80 backdrop-blur-xl border border-crease-line/50;
+  }
+}
+
+@layer utilities {
+  .text-gradient-lime {
+    background: linear-gradient(135deg, #A3E635, #38BDF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #FBBF24, #F87171);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-pitch {
+    background: linear-gradient(180deg, #0D0D0D 0%, #1A1F2E 100%);
+  }
+
+  .bg-gradient-card {
+    background: linear-gradient(135deg, #1A1F2E 0%, #252D40 100%);
+  }
+}
