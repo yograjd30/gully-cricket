@@ -22,6 +22,9 @@ import './lib/passport.js';
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Enable trust proxy for Vercel behind reverse proxy (necessary for secure session cookies)
+app.set('trust proxy', 1);
+
 // ─── Security ────────────────────────────────────────────
 app.use(helmet());
 
@@ -97,8 +100,12 @@ app.use(passport.session());
 let dbInitialized = false;
 app.use(async (req, res, next) => {
   if (!dbInitialized) {
-    await connectDB();
-    dbInitialized = true;
+    try {
+      await connectDB();
+      dbInitialized = true;
+    } catch (err) {
+      return next(err);
+    }
   }
   next();
 });
