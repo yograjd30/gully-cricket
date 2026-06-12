@@ -139,7 +139,9 @@ export const getPlayerStats = asyncHandler(async (req, res) => {
 
         if (ball.batsmanId?.toString() === playerId) {
           inningsRuns += ball.runs;
-          if (ball.isLegal) inningsBalls++;
+          const isWide = ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide';
+          const isRetired = ball.isWicket && ball.wicket?.type === 'retired';
+          if (!isWide && !isRetired) inningsBalls++;
           if (ball.runs === 4) inningsFours++;
           if (ball.runs === 6) inningsSixes++;
         }

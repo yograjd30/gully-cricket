@@ -18,10 +18,12 @@ export function calculateBattingStats(playerId, innings) {
     if (ball.batsmanId?.toString() !== playerId) continue;
 
     runs += ball.runs || 0;
-    if (ball.isLegal) ballsFaced++;
+    const isWide = ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide';
+    const isRetired = ball.isWicket && ball.wicket?.type === 'retired';
+    if (!isWide && !isRetired) ballsFaced++;
     if (ball.runs === 4) fours++;
     if (ball.runs === 6) sixes++;
-    if (ball.isWicket && ball.wicket?.dismissedPlayerId?.toString() === playerId) {
+    if (ball.isWicket && ball.wicket?.dismissedPlayerId?.toString() === playerId && ball.wicket?.type !== 'retired') {
       isOut = true;
     }
   }

@@ -40,15 +40,21 @@ export const recordBall = asyncHandler(async (req, res) => {
   }
 
   const { inningsIndex, batsmanId, bowlerId, runs, extras, isWicket, wicket, strikerId, nonStrikerId, newBatsmanId } = req.body;
+  console.log('RECORD BALL REQUEST BODY:', req.body);
+  console.log('strikerId & nonStrikerId passed:', strikerId, nonStrikerId);
   const innings = match.innings[inningsIndex];
 
   if (!innings || innings.completed) {
     return res.status(400).json({ success: false, error: 'Innings not available or completed', code: 400 });
   }
 
+  console.log('innings strikerId & nonStrikerId before assignment:', innings.strikerId, innings.nonStrikerId);
+
   // Set striker / non-striker on innings if provided
   if (strikerId) innings.strikerId = strikerId;
   if (nonStrikerId) innings.nonStrikerId = nonStrikerId;
+
+  console.log('innings strikerId & nonStrikerId after assignment:', innings.strikerId, innings.nonStrikerId);
 
   const delivery = {
     batsmanId,
@@ -130,6 +136,7 @@ export const recordBall = asyncHandler(async (req, res) => {
   }
 
   match.innings[inningsIndex] = updatedInnings;
+  match.markModified('innings');
   await match.save();
 
   // Prepare response with match meta
@@ -211,6 +218,7 @@ export const undoLastBall = asyncHandler(async (req, res) => {
   innings.result = '';
 
   match.innings[inningsIndex] = innings;
+  match.markModified('innings');
   await match.save();
 
   res.json({ success: true, data: { innings, matchStatus: match.status } });

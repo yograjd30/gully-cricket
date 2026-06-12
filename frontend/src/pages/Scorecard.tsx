@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useMatch } from '@/hooks/useMatch';
-import { Trophy, ArrowLeft, Calendar, MapPin } from 'lucide-react';
+import { Trophy, ArrowLeft, Calendar, MapPin, Share2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Innings, Ball } from '@/types/match';
 import type { Player } from '@/types/player';
@@ -8,6 +9,33 @@ import type { Player } from '@/types/player';
 export default function Scorecard() {
   const { matchId } = useParams<{ matchId: string }>();
   const { data: match, isLoading } = useMatch(matchId || null);
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = async () => {
+    if (!match) return;
+    const shareData = {
+      title: 'Gully Cricket HQ - Scorecard',
+      text: `Check out the match scorecard: ${match.teamA.name} vs ${match.teamB.name}!`,
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch {
+        // Fallback to clipboard
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy link:', err);
+    }
+  };
 
   if (isLoading) return <div className="text-center py-12 text-muted-text">Loading scorecard...</div>;
   if (!match) return <div className="text-center py-12 text-muted-text">Match not found</div>;
@@ -21,11 +49,20 @@ export default function Scorecard() {
   return (
     <div className="space-y-6 pb-8">
       {/* Header */}
-      <div className="flex items-center gap-3">
-        <Link to="/history" className="p-2 rounded-lg hover:bg-crease-line/30 text-muted-text">
-          <ArrowLeft size={20} />
-        </Link>
-        <h1 className="font-barlow font-bold text-2xl text-off-white">Match Scorecard</h1>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Link to="/history" className="p-2 rounded-lg hover:bg-crease-line/30 text-muted-text">
+            <ArrowLeft size={20} />
+          </Link>
+          <h1 className="font-barlow font-bold text-2xl text-off-white">Match Scorecard</h1>
+        </div>
+        <button
+          onClick={handleShare}
+          className="px-4 py-2 rounded-xl border border-lime-shot/30 text-lime-shot hover:bg-lime-shot/10 text-xs font-semibold font-mono flex items-center gap-1.5 active:scale-95 transition-all"
+        >
+          <Share2 size={14} />
+          {copied ? 'Link Copied!' : 'Share Scorecard'}
+        </button>
       </div>
 
       {/* Result banner */}
@@ -125,7 +162,8 @@ function InningsScorecard({
       existing.runs += ball.runs;
       
       const isWide = ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide';
-      if (!isWide) {
+      const isRetired = ball.isWicket && ball.wicket?.type === 'retired';
+      if (!isWide && !isRetired) {
         existing.balls++;
         if (ball.runs === 4) existing.fours++;
         if (ball.runs === 6) existing.sixes++;
@@ -187,7 +225,7 @@ function InningsScorecard({
       const isWide = ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide';
       const isNoBall = ball.extras?.type === 'no_ball' || ball.extras?.type === 'crease_no_ball' || ball.extras?.type === 'height_no_ball';
 
-      if (!isWide && !isNoBall) {
+      if (ball.isLegal) {
         existing.balls++;
       }
 
@@ -272,6 +310,11 @@ function InningsScorecard({
     }
   }
 
+  // Calculate run rate for total
+  const totalBallsPlayed = innings.balls.filter(b => b.isLegal && !b.isUndone).length;
+  const rr = totalBallsPlayed > 0 ? (innings.totalRuns / (totalBallsPlayed / 6)).toFixed(2) : '0.00';
+  const totalExtras = innings.extras.byes + innings.extras.legByes + innings.extras.wides + innings.extras.noBalls;
+
   return (
     <div className="gully-card space-y-4">
       {/* Header */}
@@ -293,8 +336,8 @@ function InningsScorecard({
         <table className="w-full text-sm">
           <thead>
             <tr className="text-[10px] text-muted-text font-mono uppercase border-b border-crease-line/50">
-              <th className="text-left py-2 pr-2">Batsman</th>
-              <th className="text-left px-2">Dismissal</th>
+              <th className="text-left py-2 pr-2">Batter</th>
+              <th className="text-left px-2"></th>
               <th className="text-right px-2">R</th>
               <th className="text-right px-2">B</th>
               <th className="text-right px-2">4s</th>
@@ -305,10 +348,10 @@ function InningsScorecard({
           <tbody>
             {[...batsmanStats.entries()].map(([id, stats]) => (
               <tr key={id} className="border-b border-crease-line/20">
-                <td className="py-2 pr-2 font-medium text-off-white">
+                <td className="py-2 pr-2 font-medium text-sky-six hover:underline cursor-pointer truncate max-w-[150px]">
                   {getPlayerName(id, players)}
                 </td>
-                <td className="px-2 py-2 text-xs text-muted-text max-w-[180px] truncate">
+                <td className="px-2 py-2 text-xs text-muted-text/80 max-w-[200px] truncate">
                   {stats.howOutText}
                 </td>
                 <td className="text-right px-2 font-mono font-bold text-off-white">{stats.runs}</td>
@@ -316,31 +359,55 @@ function InningsScorecard({
                 <td className="text-right px-2 font-mono text-sky-six">{stats.fours}</td>
                 <td className="text-right px-2 font-mono text-lime-shot">{stats.sixes}</td>
                 <td className="text-right pl-2 font-mono text-muted-text">
-                  {stats.balls > 0 ? ((stats.runs / stats.balls) * 100).toFixed(1) : '0.0'}
+                  {stats.balls > 0 ? ((stats.runs / stats.balls) * 100).toFixed(2) : '0.00'}
                 </td>
               </tr>
             ))}
+
+            {/* Extras Row */}
+            <tr className="border-b border-crease-line/20 text-xs">
+              <td className="py-2 pr-2 font-bold text-off-white">Extras</td>
+              <td className="px-2 py-2 text-muted-text text-[11px] font-mono">
+                {`(${totalExtras} b ${innings.extras.byes}, lb ${innings.extras.legByes}, w ${innings.extras.wides}, nb ${innings.extras.noBalls}, p 0)`}
+              </td>
+              <td className="text-right px-2 font-bold text-off-white font-mono">{totalExtras}</td>
+              <td colSpan={4}></td>
+            </tr>
+
+            {/* Total Row */}
+            <tr className="border-b border-crease-line/30 text-xs">
+              <td className="py-2 pr-2 font-bold text-off-white">Total</td>
+              <td className="px-2 py-2 text-muted-text text-[11px] font-mono">
+                {`(${innings.totalOvers} Overs, RR: ${rr})`}
+              </td>
+              <td className="text-right px-2 font-bold text-off-white font-mono">
+                {`${innings.totalRuns}-${innings.totalWickets}`}
+              </td>
+              <td colSpan={4}></td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       {/* DNB Section */}
       {didNotBat.length > 0 && (
-        <div className="text-xs text-muted-text font-mono border-t border-crease-line/20 pt-3">
-          <span className="text-off-white font-semibold uppercase mr-1">Did Not Bat:</span>
-          {didNotBat.map((p, i) => (
-            <span key={typeof p === 'string' ? p : p._id}>
-              {i > 0 && ', '}
-              {typeof p === 'string' ? 'Player' : p.name}
-            </span>
-          ))}
+        <div className="text-xs text-muted-text font-mono border-t border-crease-line/20 pt-3 flex items-start gap-3">
+          <span className="text-off-white font-bold uppercase min-w-[95px]">Did not Bat</span>
+          <div className="flex flex-wrap gap-x-2 gap-y-1">
+            {didNotBat.map((p, i) => (
+              <span key={typeof p === 'string' ? p : p._id} className="text-sky-six hover:underline cursor-pointer font-medium">
+                {typeof p === 'string' ? 'Player' : p.name}
+                {i < didNotBat.length - 1 && ','}
+              </span>
+            ))}
+          </div>
         </div>
       )}
 
       {/* Fall of Wickets Section */}
       {fallOfWickets.length > 0 && (
         <div className="text-xs text-muted-text font-mono border-t border-crease-line/20 pt-3 space-y-1">
-          <div className="text-off-white font-semibold uppercase">Fall of Wickets:</div>
+          <div className="text-off-white font-bold uppercase">Fall of Wickets:</div>
           <div className="flex flex-wrap gap-x-4 gap-y-1">
             {fallOfWickets.map((fow) => (
               <span key={fow.wicketNumber}>
@@ -351,16 +418,8 @@ function InningsScorecard({
         </div>
       )}
 
-      {/* Extras */}
-      <div className="text-xs text-muted-text font-mono border-t border-crease-line/20 pt-3">
-        Extras: {innings.extras.wides}w {innings.extras.noBalls}nb {innings.extras.byes}b {innings.extras.legByes}lb
-        = <span className="text-off-white font-bold">
-          {innings.extras.wides + innings.extras.noBalls + innings.extras.byes + innings.extras.legByes}
-        </span>
-      </div>
-
       {/* Bowling table */}
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto border-t border-crease-line/20 pt-4">
         <table className="w-full text-sm">
           <thead>
             <tr className="text-[10px] text-muted-text font-mono uppercase border-b border-crease-line/50">
@@ -371,13 +430,13 @@ function InningsScorecard({
               <th className="text-right px-2">W</th>
               <th className="text-right px-2">WD</th>
               <th className="text-right px-2">NB</th>
-              <th className="text-right pl-2">Econ</th>
+              <th className="text-right pl-2">ECO</th>
             </tr>
           </thead>
           <tbody>
             {[...bowlerStats.entries()].map(([id, stats]) => (
               <tr key={id} className="border-b border-crease-line/20">
-                <td className="py-2 pr-2 text-off-white font-medium">{getPlayerName(id, bowlers)}</td>
+                <td className="py-2 pr-2 text-sky-six hover:underline cursor-pointer font-medium">{getPlayerName(id, bowlers)}</td>
                 <td className="text-right px-2 font-mono text-muted-text">
                   {Math.floor(stats.balls / 6)}.{stats.balls % 6}
                 </td>

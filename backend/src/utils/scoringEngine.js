@@ -49,6 +49,10 @@ export function processBall(inningsState, delivery, matchRules) {
     legalBall = true;
   }
 
+  if (delivery.isWicket && delivery.wicket?.type === 'retired') {
+    legalBall = false;
+  }
+
   const deliveryTotalRuns = runsOffBat + extraRuns;
   inningsState.totalRuns += deliveryTotalRuns;
 
@@ -81,22 +85,29 @@ export function processBall(inningsState, delivery, matchRules) {
   };
   delivery.isLegal = legalBall;
 
+  console.log('scoringEngine: inningsState.strikerId & nonStrikerId:', inningsState.strikerId, inningsState.nonStrikerId);
   if (inningsState.strikerId && inningsState.nonStrikerId) {
     delivery.strikerId = inningsState.strikerId;
     delivery.nonStrikerId = inningsState.nonStrikerId;
 
     const runsRan = runsOffBat + (extras.type === 'bye' || extras.type === 'leg_bye' ? extraRuns : 0);
+    console.log('scoringEngine: runsRan:', runsRan, 'legalBall:', legalBall, 'totalBalls:', inningsState.totalBalls);
     if (runsRan % 2 !== 0) {
+      console.log('scoringEngine: Swapping strike on odd runs');
       const temp = inningsState.strikerId;
       inningsState.strikerId = inningsState.nonStrikerId;
       inningsState.nonStrikerId = temp;
     }
 
     if (legalBall && inningsState.totalBalls % 6 === 0) {
+      console.log('scoringEngine: Swapping strike on over completion');
       const temp = inningsState.strikerId;
       inningsState.strikerId = inningsState.nonStrikerId;
       inningsState.nonStrikerId = temp;
     }
+    console.log('scoringEngine: final inningsState.strikerId & nonStrikerId:', inningsState.strikerId, inningsState.nonStrikerId);
+  } else {
+    console.log('scoringEngine: WARNING: strikerId or nonStrikerId missing in inningsState!');
   }
 
   inningsState.balls.push(delivery);

@@ -64,6 +64,11 @@ export default function WicketModal({
     const dismissedPlayerId = (wicketType === 'run_out' || wicketType === 'retired') ? runOutOutId : striker?.id;
     if (!dismissedPlayerId) return;
 
+    if (remainingPlayers.length > 0 && !newBatsmanId) {
+      alert('Please select the next batsman.');
+      return;
+    }
+
     onConfirm({
       type: wicketType,
       dismissedPlayerId,

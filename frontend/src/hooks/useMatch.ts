@@ -129,3 +129,16 @@ export function useUpdateMatchStatus() {
     },
   });
 }
+
+export function useDeleteMatch() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (matchId: string) => {
+      const res = await api.delete(`/matches/${matchId}`) as unknown as ApiResponse<{ success: boolean }>;
+      return res.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['matches'] });
+    },
+  });
+}

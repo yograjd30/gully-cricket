@@ -1,12 +1,21 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMatches } from '@/hooks/useMatch';
-import { History as HistoryIcon, ChevronRight, ChevronLeft, Calendar } from 'lucide-react';
+import { useMatches, useDeleteMatch } from '@/hooks/useMatch';
+import { History as HistoryIcon, ChevronRight, ChevronLeft, Calendar, Trash2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function History() {
   const [page, setPage] = useState(1);
   const { data, isLoading } = useMatches(page);
+  const deleteMatch = useDeleteMatch();
+
+  const handleDelete = async (e: React.MouseEvent, matchId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (confirm('Are you sure you want to delete this match from history?')) {
+      await deleteMatch.mutateAsync(matchId);
+    }
+  };
 
   const matches = data?.matches || [];
   const pagination = data?.pagination;
@@ -83,7 +92,17 @@ export default function History() {
                     </div>
                   </div>
 
-                  <ChevronRight size={18} className="text-muted-text group-hover:text-lime-shot transition-colors" />
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={(e) => handleDelete(e, match._id)}
+                      disabled={deleteMatch.isPending}
+                      className="p-2 rounded-lg hover:bg-crease-line/50 text-muted-text hover:text-wicket-red transition-colors disabled:opacity-30"
+                      aria-label="Delete match"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                    <ChevronRight size={18} className="text-muted-text group-hover:text-lime-shot transition-colors" />
+                  </div>
                 </div>
               </Link>
             </motion.div>

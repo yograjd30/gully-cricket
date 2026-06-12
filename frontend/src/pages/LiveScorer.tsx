@@ -23,6 +23,9 @@ export default function LiveScorer() {
   const [localStrikerId, setLocalStrikerId] = useState<string>('');
   const [localNonStrikerId, setLocalNonStrikerId] = useState<string>('');
   const [localBowlerId, setLocalBowlerId] = useState<string>('');
+  const [nextBowlerModalOpen, setNextBowlerModalOpen] = useState(false);
+  const [secondInningsModalOpen, setSecondInningsModalOpen] = useState(false);
+  const [prevBallsCount, setPrevBallsCount] = useState(0);
 
   // Derive current innings info
   const inningsIndex = match?.status === 'innings2' ? 1 : 0;
@@ -85,13 +88,45 @@ export default function LiveScorer() {
         setLocalNonStrikerId(availableBatsmen[1]._id);
       }
     }
-  }, [ballsLength, currentInningsId, availableBatsmen, currentInnings]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ballsLength, currentInningsId]);
 
   useEffect(() => {
     if (bowlingPlayers.length > 0 && !localBowlerId) {
       setLocalBowlerId(bowlingPlayers[0]._id);
     }
   }, [bowlingPlayers, localBowlerId]);
+
+  // Detect over completion to trigger bowler selection modal
+  useEffect(() => {
+    if (currentInnings) {
+      const currentCount = currentInnings.totalBalls;
+      if (currentCount > prevBallsCount && currentCount % 6 === 0 && currentCount > 0 && !currentInnings.completed) {
+        setNextBowlerModalOpen(true);
+      }
+      setPrevBallsCount(currentCount);
+    }
+  }, [currentInnings?.totalBalls, currentInnings?.completed, prevBallsCount, currentInnings]);
+
+  // Detect second innings start to trigger openings selection modal
+  useEffect(() => {
+    if (match?.status === 'innings2' && currentInnings && currentInnings.balls.length === 0) {
+      setSecondInningsModalOpen(true);
+    } else {
+      setSecondInningsModalOpen(false);
+    }
+  }, [match?.status, currentInningsId, ballsLength, currentInnings]);
+
+  const handleNextBowlerSelect = (bowlerId: string) => {
+    setLocalBowlerId(bowlerId);
+  };
+
+  const handleSecondInningsConfirm = (data: { strikerId: string; nonStrikerId: string; bowlerId: string }) => {
+    setLocalStrikerId(data.strikerId);
+    setLocalNonStrikerId(data.nonStrikerId);
+    setLocalBowlerId(data.bowlerId);
+    setSecondInningsModalOpen(false);
+  };
 
   const strikerName = useMemo(() => {
     const player = battingPlayers.find((p) => p._id === localStrikerId);
@@ -131,7 +166,8 @@ export default function LiveScorer() {
       if (ball.batsmanId === localStrikerId) {
         strikerStats.runs += ball.runs;
         const isWide = ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide';
-        if (!isWide) {
+        const isRetired = ball.isWicket && ball.wicket?.type === 'retired';
+        if (!isWide && !isRetired) {
           strikerStats.balls += 1;
           if (ball.runs === 4) strikerStats.fours += 1;
           if (ball.runs === 6) strikerStats.sixes += 1;
@@ -139,7 +175,8 @@ export default function LiveScorer() {
       } else if (ball.batsmanId === localNonStrikerId) {
         nonStrikerStats.runs += ball.runs;
         const isWide = ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide';
-        if (!isWide) {
+        const isRetired = ball.isWicket && ball.wicket?.type === 'retired';
+        if (!isWide && !isRetired) {
           nonStrikerStats.balls += 1;
           if (ball.runs === 4) nonStrikerStats.fours += 1;
           if (ball.runs === 6) nonStrikerStats.sixes += 1;
@@ -151,7 +188,7 @@ export default function LiveScorer() {
         const isWide = ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide';
         const isNoBall = ball.extras?.type === 'no_ball' || ball.extras?.type === 'crease_no_ball' || ball.extras?.type === 'height_no_ball';
         
-        if (!isWide && !isNoBall) {
+        if (ball.isLegal) {
           bowlerStats.balls += 1;
         }
         
@@ -504,6 +541,166 @@ export default function LiveScorer() {
         fieldingPlayers={bowlingPlayers as Player[]}
         boundaryOutEnabled={match.rules?.boundaryOut ?? false}
       />
+
+      {/* Next Bowler Modal */}
+      <NextBowlerModal
+        open={nextBowlerModalOpen}
+        onClose={() => setNextBowlerModalOpen(false)}
+        bowlers={bowlingPlayers}
+        lastBowlerId={currentInnings?.balls[currentInnings.balls.length - 1]?.bowlerId || ''}
+        onSelect={handleNextBowlerSelect}
+      />
+
+      {/* Second Innings Setup Modal */}
+      <SecondInningsModal
+        open={secondInningsModalOpen}
+        battingPlayers={battingPlayers}
+        bowlingPlayers={bowlingPlayers}
+        onConfirm={handleSecondInningsConfirm}
+      />
+    </div>
+  );
+}
+
+interface NextBowlerModalProps {
+  open: boolean;
+  onClose: () => void;
+  bowlers: Player[];
+  lastBowlerId: string;
+  onSelect: (bowlerId: string) => void;
+}
+
+function NextBowlerModal({ open, onClose, bowlers, lastBowlerId, onSelect }: NextBowlerModalProps) {
+  if (!open) return null;
+
+  // Filter out consecutive overs for the same bowler if multiple bowlers are available
+  const allowedBowlers = bowlers.length > 1
+    ? bowlers.filter((b) => b._id !== lastBowlerId)
+    : bowlers;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-pitch-black/80 backdrop-blur-sm" />
+      <div className="relative glass rounded-2xl w-full max-w-sm p-6 animate-slide-up text-center">
+        <h2 className="font-barlow font-bold text-2xl text-lime-shot mb-2">🥎 Over Completed!</h2>
+        <p className="text-sm text-muted-text mb-4">Choose the bowler for the next over:</p>
+
+        <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
+          {allowedBowlers.map((bowler) => (
+            <button
+              key={bowler._id}
+              onClick={() => {
+                onSelect(bowler._id);
+                onClose();
+              }}
+              className="w-full py-3 px-4 rounded-xl border border-crease-line bg-pitch-black hover:border-lime-shot text-off-white text-sm font-semibold transition-all active:scale-95 text-left flex justify-between items-center"
+            >
+              <span>{bowler.name}</span>
+              <span className="text-[10px] text-muted-text font-mono">Select</span>
+            </button>
+          ))}
+          {allowedBowlers.length === 0 && (
+            <p className="text-xs text-muted-text py-4">No bowlers available</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface SecondInningsModalProps {
+  open: boolean;
+  battingPlayers: Player[];
+  bowlingPlayers: Player[];
+  onConfirm: (data: { strikerId: string; nonStrikerId: string; bowlerId: string }) => void;
+}
+
+function SecondInningsModal({ open, battingPlayers, bowlingPlayers, onConfirm }: SecondInningsModalProps) {
+  const [strikerId, setStrikerId] = useState('');
+  const [nonStrikerId, setNonStrikerId] = useState('');
+  const [bowlerId, setBowlerId] = useState('');
+
+  useEffect(() => {
+    if (open) {
+      setStrikerId(battingPlayers[0]?._id || '');
+      setNonStrikerId(battingPlayers[1]?._id || '');
+      setBowlerId(bowlingPlayers[0]?._id || '');
+    }
+  }, [open, battingPlayers, bowlingPlayers]);
+
+  if (!open) return null;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!strikerId || !nonStrikerId || !bowlerId) return;
+    if (strikerId === nonStrikerId) {
+      alert('Striker and Non-Striker must be different players.');
+      return;
+    }
+    onConfirm({ strikerId, nonStrikerId, bowlerId });
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-pitch-black/80 backdrop-blur-sm" />
+      <div className="relative glass rounded-2xl w-full max-w-md p-6 animate-slide-up">
+        <h2 className="font-barlow font-bold text-2xl text-lime-shot mb-2 text-center">🏆 Innings 1 Completed!</h2>
+        <p className="text-xs text-muted-text mb-6 text-center">Set up opening batsmen and bowler for the 2nd Innings:</p>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-muted-text mb-1.5">Striker *</label>
+            <select
+              value={strikerId}
+              onChange={(e) => setStrikerId(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl bg-pitch-black border border-crease-line text-off-white text-sm focus:outline-none focus:border-lime-shot/50"
+              required
+            >
+              <option value="" disabled>Select Striker</option>
+              {battingPlayers.map((p) => (
+                <option key={p._id} value={p._id}>{p.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-muted-text mb-1.5">Non-Striker *</label>
+            <select
+              value={nonStrikerId}
+              onChange={(e) => setNonStrikerId(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl bg-pitch-black border border-crease-line text-off-white text-sm focus:outline-none focus:border-lime-shot/50"
+              required
+            >
+              <option value="" disabled>Select Non-Striker</option>
+              {battingPlayers.filter(p => p._id !== strikerId).map((p) => (
+                <option key={p._id} value={p._id}>{p.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-muted-text mb-1.5">Opening Bowler *</label>
+            <select
+              value={bowlerId}
+              onChange={(e) => setBowlerId(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl bg-pitch-black border border-crease-line text-off-white text-sm focus:outline-none focus:border-lime-shot/50"
+              required
+            >
+              <option value="" disabled>Select Bowler</option>
+              {bowlingPlayers.map((p) => (
+                <option key={p._id} value={p._id}>{p.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full gully-btn-primary py-3 rounded-xl text-base font-semibold mt-2"
+          >
+            Start 2nd Innings
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
