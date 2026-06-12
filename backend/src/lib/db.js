@@ -6,6 +6,12 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_FILE = path.join(__dirname, '../../db.json');
 
+// ─── Mongoose Connection Caching (for Vercel serverless) ─────
+let cached = global.__mongooseCache;
+if (!cached) {
+  cached = global.__mongooseCache = { conn: null, promise: null };
+}
+
 const readDb = () => {
   if (!fs.existsSync(DB_FILE)) {
     fs.writeFileSync(DB_FILE, JSON.stringify({
@@ -328,36 +334,66 @@ const setupMockDb = () => {
 };
 
 const connectDB = async () => {
+  // If already connected (serverless warm start), reuse
+  if (cached.conn) {
+    return cached.conn;
+  }
+
   let uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/gully-cricket-hq';
   const isPlaceholder = uri.includes('<cluster>') || uri.includes('<user>') || uri.includes('<password>');
   
+  // On Vercel, we MUST have a real MongoDB URI (filesystem is read-only)
+  if (process.env.VERCEL && (isPlaceholder || !process.env.MONGODB_URI)) {
+    throw new Error(
+      'MONGODB_URI environment variable is required on Vercel. ' +
+      'Set it in your Vercel project settings with a MongoDB Atlas connection string.'
+    );
+  }
+
   if (isPlaceholder || process.env.USE_MOCK_DB === 'true') {
     console.warn('Using local JSON Database Mock fallback (MongoDB URI is a placeholder or USE_MOCK_DB is true).');
     setupMockDb();
     return;
   }
 
-  try {
-    const conn = await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 1500,
-      connectTimeoutMS: 1500,
+  // Use cached promise to avoid multiple connections during serverless cold starts
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(uri, {
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 5000,
+    }).then((conn) => {
+      console.log(`MongoDB connected: ${conn.connection.host}`);
+      return conn;
+    }).catch((error) => {
+      cached.promise = null; // Reset so next request retries
+      console.error(`MongoDB connection failed: ${error.message}`);
+      
+      // On Vercel, don't fall back to JSON — it won't work
+      if (process.env.VERCEL) {
+        throw error;
+      }
+      
+      // Local dev fallback
+      console.warn('Falling back to local JSON Database.');
+      try {
+        mongoose.disconnect().catch(() => {});
+      } catch (disErr) {}
+      setupMockDb();
     });
-    console.log(`MongoDB connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error(`MongoDB connection failed: ${error.message}. Falling back to local JSON Database.`);
-    try {
-      await mongoose.disconnect();
-    } catch (disErr) {}
-    setupMockDb();
   }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
 };
 
-mongoose.connection.on('disconnected', () => {
-  console.warn('MongoDB disconnected. Attempting reconnect...');
-});
+if (!process.env.VERCEL) {
+  mongoose.connection.on('disconnected', () => {
+    console.warn('MongoDB disconnected. Attempting reconnect...');
+  });
 
-mongoose.connection.on('error', (err) => {
-  console.error(`MongoDB error: ${err.message}`);
-});
+  mongoose.connection.on('error', (err) => {
+    console.error(`MongoDB error: ${err.message}`);
+  });
+}
 
 export default connectDB;

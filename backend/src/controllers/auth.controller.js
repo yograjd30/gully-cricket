@@ -1,6 +1,12 @@
 import passport from 'passport';
 import User from '../models/User.js';
 
+const getFrontendUrl = () => {
+  if (process.env.FRONTEND_URL) return process.env.FRONTEND_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return 'http://localhost:5173';
+};
+
 export const googleAuth = async (req, res, next) => {
   const clientID = process.env.GOOGLE_CLIENT_ID;
   if (!clientID || clientID.includes('your-google-client-id') || clientID === 'your-google-client-id') {
@@ -16,13 +22,13 @@ export const googleAuth = async (req, res, next) => {
       }
       return req.login(user, (err) => {
         if (err) {
-          return res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:5173'}/profile?error=auth_failed`);
+          return res.redirect(`${getFrontendUrl()}/profile?error=auth_failed`);
         }
-        return res.redirect(process.env.FRONTEND_URL || 'http://localhost:5173');
+        return res.redirect(getFrontendUrl());
       });
     } catch (error) {
       console.error('Mock login fallback error:', error);
-      return res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:5173'}/profile?error=auth_failed`);
+      return res.redirect(`${getFrontendUrl()}/profile?error=auth_failed`);
     }
   }
   return passport.authenticate('google', {
@@ -30,12 +36,14 @@ export const googleAuth = async (req, res, next) => {
   })(req, res, next);
 };
 
-export const googleCallback = passport.authenticate('google', {
-  failureRedirect: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/profile?error=auth_failed`,
-});
+export const googleCallback = (req, res, next) => {
+  passport.authenticate('google', {
+    failureRedirect: `${getFrontendUrl()}/profile?error=auth_failed`,
+  })(req, res, next);
+};
 
 export const googleCallbackRedirect = (req, res) => {
-  res.redirect(process.env.FRONTEND_URL || 'http://localhost:5173');
+  res.redirect(getFrontendUrl());
 };
 
 export const getMe = (req, res) => {

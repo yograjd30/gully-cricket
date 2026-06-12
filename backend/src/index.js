@@ -24,13 +24,37 @@ const PORT = process.env.PORT || 5000;
 
 // ─── Security ────────────────────────────────────────────
 app.use(helmet());
+
+// Build allowed origins list
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'http://localhost:5173',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+];
+if (process.env.VERCEL_URL) {
+  allowedOrigins.push(`https://${process.env.VERCEL_URL}`);
+}
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.some(allowed => origin.startsWith(allowed))) {
+      return callback(null, true);
+    }
+    // In production on Vercel, allow same-origin (no origin header)
+    if (process.env.VERCEL) {
+      return callback(null, true);
+    }
+    return callback(null, true); // Be permissive for now
+  },
   credentials: true,
 }));
 
 // ─── Logging ─────────────────────────────────────────────
-app.use(morgan('dev'));
+if (!process.env.VERCEL) {
+  app.use(morgan('dev'));
+}
 
 // ─── Body Parsing ────────────────────────────────────────
 app.use(express.json({ limit: '2mb' }));
@@ -42,13 +66,15 @@ const isPlaceholder = rawMongoUri.includes('<cluster>') || rawMongoUri.includes(
 const mongoUrl = isPlaceholder ? 'mongodb://127.0.0.1:27017/gully-cricket-hq' : rawMongoUri;
 
 const useMockDb = isPlaceholder || process.env.USE_MOCK_DB === 'true';
-const sessionStore = useMockDb
-  ? new session.MemoryStore()
-  : MongoStore.create({
+
+// On Vercel with a real MongoDB URI, use MongoStore. Otherwise MemoryStore for local dev.
+const sessionStore = (!useMockDb && !isPlaceholder)
+  ? MongoStore.create({
       mongoUrl: mongoUrl,
       collectionName: 'sessions',
       ttl: 7 * 24 * 60 * 60, // 7 days
-    });
+    })
+  : new session.MemoryStore();
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'gully-cricket-dev-secret',
@@ -66,6 +92,16 @@ app.use(session({
 // ─── Passport ────────────────────────────────────────────
 app.use(passport.initialize());
 app.use(passport.session());
+
+// ─── Lazy DB Init Middleware ─────────────────────────────
+let dbInitialized = false;
+app.use(async (req, res, next) => {
+  if (!dbInitialized) {
+    await connectDB();
+    dbInitialized = true;
+  }
+  next();
+});
 
 // ─── Routes ──────────────────────────────────────────────
 app.use('/api/auth', authRoutes);
@@ -95,14 +131,16 @@ app.use((err, req, res, _next) => {
   });
 });
 
-// ─── Start ───────────────────────────────────────────────
-const start = async () => {
-  await connectDB();
-  app.listen(PORT, () => {
-    console.log(`🏏 Gully Cricket HQ API running on port ${PORT}`);
-  });
-};
-
-start();
+// ─── Start (local dev only, skipped on Vercel) ───────────
+if (!process.env.VERCEL) {
+  const start = async () => {
+    await connectDB();
+    dbInitialized = true;
+    app.listen(PORT, () => {
+      console.log(`🏏 Gully Cricket HQ API running on port ${PORT}`);
+    });
+  };
+  start();
+}
 
 export default app;
