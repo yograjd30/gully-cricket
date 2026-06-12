@@ -37,9 +37,12 @@ export const getLeaderboard = asyncHandler(async (req, res) => {
           if (!playerStats[bowlId]) {
             playerStats[bowlId] = { runs: 0, wickets: 0, matches: new Set() };
           }
-          if (ball.isWicket && ball.wicket?.type !== 'run_out') {
+          if (ball.isWicket && ball.wicket?.type !== 'run_out' && ball.wicket?.type !== 'retired') {
             playerStats[bowlId].wickets += 1;
           }
+          const isBowlerExtra = ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide' || ball.extras?.type === 'no_ball' || ball.extras?.type === 'crease_no_ball' || ball.extras?.type === 'height_no_ball';
+          const extraConceded = isBowlerExtra ? (ball.extras?.runs || 0) : 0;
+          playerStats[bowlId].runs += (ball.runs || 0) + extraConceded;
           playerStats[bowlId].matches.add(match._id.toString());
         }
       }

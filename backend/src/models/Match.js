@@ -5,11 +5,13 @@ const ballSchema = new mongoose.Schema({
   ballNumber: { type: Number, required: true },
   batsmanId: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: true },
   bowlerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: true },
+  strikerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+  nonStrikerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
   runs: { type: Number, default: 0 },
   extras: {
     type: {
       type: String,
-      enum: ['none', 'offside_wide', 'legside_wide', 'no_ball', 'bye', 'leg_bye'],
+      enum: ['none', 'offside_wide', 'legside_wide', 'no_ball', 'bye', 'leg_bye', 'crease_no_ball', 'height_no_ball'],
       default: 'none',
     },
     runs: { type: Number, default: 0 },
@@ -31,6 +33,8 @@ const ballSchema = new mongoose.Schema({
 const inningsSchema = new mongoose.Schema({
   battingTeam: { type: String, enum: ['teamA', 'teamB'], required: true },
   bowlingTeam: { type: String, enum: ['teamA', 'teamB'], required: true },
+  strikerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+  nonStrikerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
   balls: [ballSchema],
   totalRuns: { type: Number, default: 0 },
   totalWickets: { type: Number, default: 0 },

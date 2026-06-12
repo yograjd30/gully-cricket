@@ -111,62 +111,25 @@ export default function PlayerForm({ open, onClose, onSubmit, editPlayer, isLoad
             </div>
           </div>
 
-          {/* Role */}
+          {/* Batting style only */}
           <div>
-            <label className="block text-sm font-medium text-muted-text mb-1.5">Role</label>
-            <div className="grid grid-cols-3 gap-2">
-              {(['batsman', 'bowler', 'allrounder'] as const).map((r) => (
+            <label className="block text-sm font-medium text-muted-text mb-1.5">Batting Style</label>
+            <div className="flex gap-2">
+              {(['right', 'left'] as const).map((s) => (
                 <button
-                  key={r}
+                  key={s}
                   type="button"
-                  onClick={() => setRole(r)}
+                  onClick={() => setBattingStyle(s)}
                   className={cn(
-                    'px-3 py-2 rounded-xl text-sm font-medium border transition-all capitalize',
-                    role === r
-                      ? 'border-lime-shot bg-lime-shot/10 text-lime-shot'
-                      : 'border-crease-line text-muted-text hover:border-crease-line/80'
+                    'flex-1 px-4 py-3 rounded-xl text-sm font-semibold border transition-all',
+                    battingStyle === s
+                      ? 'border-sky-six bg-sky-six/10 text-sky-six'
+                      : 'border-crease-line text-muted-text'
                   )}
                 >
-                  {r}
+                  {s === 'right' ? 'Right Hand Bat (RHB)' : 'Left Hand Bat (LHB)'}
                 </button>
               ))}
-            </div>
-          </div>
-
-          {/* Batting & Bowling style */}
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-muted-text mb-1.5">Batting</label>
-              <div className="flex gap-2">
-                {(['right', 'left'] as const).map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    onClick={() => setBattingStyle(s)}
-                    className={cn(
-                      'flex-1 px-3 py-2 rounded-xl text-xs font-medium border transition-all',
-                      battingStyle === s
-                        ? 'border-sky-six bg-sky-six/10 text-sky-six'
-                        : 'border-crease-line text-muted-text'
-                    )}
-                  >
-                    {s === 'right' ? 'RHB' : 'LHB'}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-muted-text mb-1.5">Bowling</label>
-              <select
-                value={bowlingStyle}
-                onChange={(e) => setBowlingStyle(e.target.value as Player['bowlingStyle'])}
-                className="w-full px-3 py-2 rounded-xl bg-pitch-black border border-crease-line text-off-white text-xs focus:outline-none focus:border-lime-shot/50 transition-all"
-              >
-                <option value="none">None</option>
-                <option value="fast">Fast</option>
-                <option value="medium">Medium</option>
-                <option value="spin">Spin</option>
-              </select>
             </div>
           </div>
 

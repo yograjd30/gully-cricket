@@ -15,6 +15,9 @@ export interface DeliveryPayload {
     dismissedPlayerId: string;
     fielderId?: string;
   };
+  strikerId?: string;
+  nonStrikerId?: string;
+  newBatsmanId?: string;
 }
 
 export interface ScoringResponse {

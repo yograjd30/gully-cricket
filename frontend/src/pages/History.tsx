@@ -20,7 +20,7 @@ export default function History() {
           Match History
         </h1>
         <p className="text-muted-text text-sm mt-1">
-          {pagination?.total || 0} match{(pagination?.total || 0) !== 1 ? 'es' : ''} played
+          {pagination?.total || 0} {(pagination?.total || 0) === 1 ? 'match' : 'matches'} played
         </p>
       </div>
 

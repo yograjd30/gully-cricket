@@ -53,7 +53,7 @@ export default function ScoringPad({ onScore, onWicket, onUndo, boundaryOutEnabl
       </div>
 
       {/* Extras row */}
-      <div className="grid grid-cols-5 gap-2">
+      <div className="grid grid-cols-4 gap-2">
         <button
           onClick={() => onScore(0, 'offside_wide')}
           disabled={disabled}
@@ -69,25 +69,18 @@ export default function ScoringPad({ onScore, onWicket, onUndo, boundaryOutEnabl
           WD LEG
         </button>
         <button
-          onClick={() => onScore(0, 'no_ball')}
+          onClick={() => onScore(0, 'crease_no_ball')}
           disabled={disabled}
           className="py-3 rounded-xl border border-gold-bail/30 text-gold-bail text-xs font-semibold hover:bg-gold-bail/10 transition-all active:scale-95 disabled:opacity-30"
         >
-          NO BALL
+          NB CREASE
         </button>
         <button
-          onClick={() => onScore(1, 'bye')}
+          onClick={() => onScore(0, 'height_no_ball')}
           disabled={disabled}
-          className="py-3 rounded-xl border border-crease-line text-muted-text text-xs font-semibold hover:bg-crease-line/30 transition-all active:scale-95 disabled:opacity-30"
+          className="py-3 rounded-xl border border-gold-bail/30 text-gold-bail text-xs font-semibold hover:bg-gold-bail/10 transition-all active:scale-95 disabled:opacity-30"
         >
-          BYE
-        </button>
-        <button
-          onClick={() => onScore(1, 'leg_bye')}
-          disabled={disabled}
-          className="py-3 rounded-xl border border-crease-line text-muted-text text-xs font-semibold hover:bg-crease-line/30 transition-all active:scale-95 disabled:opacity-30"
-        >
-          LEG BYE
+          NB HEIGHT
         </button>
       </div>
 

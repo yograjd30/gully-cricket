@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { WicketType } from '@/types/match';
 import type { Player } from '@/types/player';
 import { X } from 'lucide-react';
@@ -13,7 +13,8 @@ interface Props {
     newBatsmanId?: string;
     fielderId?: string;
   }) => void;
-  currentBatsman: { id: string; name: string } | null;
+  striker: { id: string; name: string } | null;
+  nonStriker: { id: string; name: string } | null;
   remainingPlayers: Player[];
   fieldingPlayers: Player[];
   boundaryOutEnabled: boolean;
@@ -32,7 +33,8 @@ export default function WicketModal({
   open,
   onClose,
   onConfirm,
-  currentBatsman,
+  striker,
+  nonStriker,
   remainingPlayers,
   fieldingPlayers,
   boundaryOutEnabled,
@@ -40,6 +42,16 @@ export default function WicketModal({
   const [wicketType, setWicketType] = useState<WicketType>('bowled');
   const [newBatsmanId, setNewBatsmanId] = useState('');
   const [fielderId, setFielderId] = useState('');
+  const [runOutOutId, setRunOutOutId] = useState('');
+
+  useEffect(() => {
+    if (open) {
+      setWicketType('bowled');
+      setNewBatsmanId('');
+      setFielderId('');
+      setRunOutOutId(striker?.id || '');
+    }
+  }, [open, striker]);
 
   if (!open) return null;
 
@@ -49,16 +61,15 @@ export default function WicketModal({
     : WICKET_TYPES.filter((t) => t.value !== 'boundary_out');
 
   const handleConfirm = () => {
-    if (!currentBatsman) return;
+    const dismissedPlayerId = (wicketType === 'run_out' || wicketType === 'retired') ? runOutOutId : striker?.id;
+    if (!dismissedPlayerId) return;
+
     onConfirm({
       type: wicketType,
-      dismissedPlayerId: currentBatsman.id,
+      dismissedPlayerId,
       newBatsmanId: newBatsmanId || undefined,
       fielderId: fielderId || undefined,
     });
-    setWicketType('bowled');
-    setNewBatsmanId('');
-    setFielderId('');
   };
 
   return (
@@ -73,21 +84,22 @@ export default function WicketModal({
           </button>
         </div>
 
-        {/* Dismissed batsman */}
-        {currentBatsman && (
+        {/* Dismissed batsman preview (if not run out or retired) */}
+        {striker && wicketType !== 'run_out' && wicketType !== 'retired' && (
           <div className="bg-wicket-red/10 border border-wicket-red/20 rounded-xl px-4 py-3 mb-4">
             <p className="text-xs text-muted-text">Dismissed</p>
-            <p className="font-semibold text-off-white">{currentBatsman.name}</p>
+            <p className="font-semibold text-off-white">{striker.name}</p>
           </div>
         )}
 
-        {/* Wicket type */}
+        {/* Wicket type selector */}
         <div className="mb-4">
           <label className="text-sm text-muted-text mb-2 block">How Out?</label>
           <div className="grid grid-cols-3 gap-2">
             {filteredTypes.map((type) => (
               <button
                 key={type.value}
+                type="button"
                 onClick={() => setWicketType(type.value)}
                 className={cn(
                   'px-3 py-2 rounded-xl text-xs font-medium border transition-all text-center',
@@ -103,6 +115,45 @@ export default function WicketModal({
             ))}
           </div>
         </div>
+
+        {/* Run Out / Retired Dismissal Selection */}
+        {(wicketType === 'run_out' || wicketType === 'retired') && (
+          <div className="mb-4">
+            <label className="text-sm text-muted-text mb-2 block">
+              {wicketType === 'retired' ? 'Who is Retiring? *' : 'Who is Run Out? *'}
+            </label>
+            <div className="grid grid-cols-2 gap-3">
+              {striker && (
+                <button
+                  type="button"
+                  onClick={() => setRunOutOutId(striker.id)}
+                  className={cn(
+                    'px-4 py-3 rounded-xl border text-sm font-semibold transition-all text-center',
+                    runOutOutId === striker.id
+                      ? 'border-wicket-red bg-wicket-red/10 text-wicket-red'
+                      : 'border-crease-line text-off-white hover:border-crease-line/80'
+                  )}
+                >
+                  Striker: {striker.name}
+                </button>
+              )}
+              {nonStriker && (
+                <button
+                  type="button"
+                  onClick={() => setRunOutOutId(nonStriker.id)}
+                  className={cn(
+                    'px-4 py-3 rounded-xl border text-sm font-semibold transition-all text-center',
+                    runOutOutId === nonStriker.id
+                      ? 'border-wicket-red bg-wicket-red/10 text-wicket-red'
+                      : 'border-crease-line text-off-white hover:border-crease-line/80'
+                  )}
+                >
+                  Non-Striker: {nonStriker.name}
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Fielder select */}
         {needsFielder && (
@@ -121,8 +172,8 @@ export default function WicketModal({
           </div>
         )}
 
-        {/* New batsman */}
-        {remainingPlayers.length > 0 && wicketType !== 'retired' && (
+        {/* New batsman select */}
+        {remainingPlayers.length > 0 && (
           <div className="mb-4">
             <label className="text-sm text-muted-text mb-1.5 block">New Batsman</label>
             <select
@@ -139,6 +190,7 @@ export default function WicketModal({
         )}
 
         <button
+          type="button"
           onClick={handleConfirm}
           className="w-full gully-btn-danger py-3 rounded-xl text-base"
         >

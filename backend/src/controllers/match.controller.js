@@ -124,11 +124,15 @@ export const updateToss = asyncHandler(async (req, res) => {
   const battingFirst = req.body.decision === 'bat' ? req.body.winner : (req.body.winner === 'teamA' ? 'teamB' : 'teamA');
   const bowlingFirst = battingFirst === 'teamA' ? 'teamB' : 'teamA';
 
+  const battingPlayers = match[battingFirst]?.players || [];
+
   // Initialize first innings
   match.innings = [
     {
       battingTeam: battingFirst,
       bowlingTeam: bowlingFirst,
+      strikerId: battingPlayers[0] || null,
+      nonStrikerId: battingPlayers[1] || null,
       balls: [],
       totalRuns: 0,
       totalWickets: 0,

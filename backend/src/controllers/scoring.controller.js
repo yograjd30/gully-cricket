@@ -39,12 +39,16 @@ export const recordBall = asyncHandler(async (req, res) => {
     });
   }
 
-  const { inningsIndex, batsmanId, bowlerId, runs, extras, isWicket, wicket } = req.body;
+  const { inningsIndex, batsmanId, bowlerId, runs, extras, isWicket, wicket, strikerId, nonStrikerId, newBatsmanId } = req.body;
   const innings = match.innings[inningsIndex];
 
   if (!innings || innings.completed) {
     return res.status(400).json({ success: false, error: 'Innings not available or completed', code: 400 });
   }
+
+  // Set striker / non-striker on innings if provided
+  if (strikerId) innings.strikerId = strikerId;
+  if (nonStrikerId) innings.nonStrikerId = nonStrikerId;
 
   const delivery = {
     batsmanId,
@@ -60,6 +64,15 @@ export const recordBall = asyncHandler(async (req, res) => {
 
   // Process through scoring engine
   const updatedInnings = processBall(innings, delivery, match.rules);
+
+  // If a wicket occurred and a new batsman was selected, update striker/non-striker on the pitch
+  if (isWicket && wicket?.dismissedPlayerId && newBatsmanId) {
+    if (updatedInnings.strikerId?.toString() === wicket.dismissedPlayerId.toString()) {
+      updatedInnings.strikerId = newBatsmanId;
+    } else if (updatedInnings.nonStrikerId?.toString() === wicket.dismissedPlayerId.toString()) {
+      updatedInnings.nonStrikerId = newBatsmanId;
+    }
+  }
 
   // Generate commentary (non-blocking)
   const batsmanName = (await Player.findById(batsmanId).select('name').lean())?.name || 'Batsman';
@@ -90,9 +103,13 @@ export const recordBall = asyncHandler(async (req, res) => {
     if (match.status === 'innings1') {
       // Transition to innings2
       match.status = 'innings2';
+      const nextBattingTeam = innings.bowlingTeam;
+      const nextPlayers = match[nextBattingTeam]?.players || [];
       match.innings.push({
         battingTeam: innings.bowlingTeam,
         bowlingTeam: innings.battingTeam,
+        strikerId: nextPlayers[0] || null,
+        nonStrikerId: nextPlayers[1] || null,
         balls: [],
         totalRuns: 0,
         totalWickets: 0,
@@ -160,9 +177,18 @@ export const undoLastBall = asyncHandler(async (req, res) => {
   const ball = innings.balls[lastBallIdx];
   ball.isUndone = true;
 
-  // Reverse the ball's effect on totals
-  innings.totalRuns -= ball.runs;
-  if (ball.isWicket) innings.totalWickets -= 1;
+  // Restore striker and non-striker to their previous state
+  innings.strikerId = ball.strikerId;
+  innings.nonStrikerId = ball.nonStrikerId;
+
+  // Reverse the ball's effect on totals (batting runs + extra runs)
+  const deliveryTotalRuns = ball.runs + (ball.extras?.runs || 0);
+  innings.totalRuns -= deliveryTotalRuns;
+  if (ball.isWicket) {
+    if (ball.wicket?.type !== 'retired') {
+      innings.totalWickets -= 1;
+    }
+  }
   if (ball.isLegal) {
     innings.totalBalls -= 1;
     innings.totalOvers = parseFloat(
@@ -172,13 +198,13 @@ export const undoLastBall = asyncHandler(async (req, res) => {
 
   // Reverse extras
   if (ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide') {
-    innings.extras.wides -= ball.runs;
-  } else if (ball.extras?.type === 'no_ball') {
-    innings.extras.noBalls -= (match.rules.noBall?.runs || 1);
+    innings.extras.wides -= (ball.extras?.runs || 0);
+  } else if (ball.extras?.type === 'no_ball' || ball.extras?.type === 'crease_no_ball' || ball.extras?.type === 'height_no_ball') {
+    innings.extras.noBalls -= (ball.extras?.runs || 0);
   } else if (ball.extras?.type === 'bye') {
-    innings.extras.byes -= ball.runs;
+    innings.extras.byes -= (ball.extras?.runs || 0);
   } else if (ball.extras?.type === 'leg_bye') {
-    innings.extras.legByes -= ball.runs;
+    innings.extras.legByes -= (ball.extras?.runs || 0);
   }
 
   innings.completed = false;

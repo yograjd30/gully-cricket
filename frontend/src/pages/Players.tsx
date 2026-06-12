@@ -53,7 +53,7 @@ export default function Players() {
             Player Pool
           </h1>
           <p className="text-muted-text text-sm mt-1">
-            {players.length} player{players.length !== 1 ? 's' : ''} in your squad
+            {players.length} {players.length === 1 ? 'player' : 'players'} in your squad
           </p>
         </div>
         <button

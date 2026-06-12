@@ -1,0 +1,3106 @@
+{
+  "users": [],
+  "players": [
+    {
+      "_id": "6a2af70b77f173046a9a2472",
+      "userId": null,
+      "name": "Yash",
+      "nickname": "Smasher",
+      "avatar": "",
+      "role": "batsman",
+      "battingStyle": "right",
+      "bowlingStyle": "none",
+      "createdAt": "2026-06-11T17:57:31.527Z",
+      "updatedAt": "2026-06-11T17:57:31.527Z"
+    },
+    {
+      "_id": "6a2af72c77f173046a9a2474",
+      "userId": null,
+      "name": "Rohan",
+      "nickname": "Spinner",
+      "avatar": "",
+      "role": "allrounder",
+      "battingStyle": "right",
+      "bowlingStyle": "none",
+      "createdAt": "2026-06-11T17:58:04.560Z",
+      "updatedAt": "2026-06-12T05:01:07.875Z"
+    },
+    {
+      "_id": "6a2af74577f173046a9a2476",
+      "userId": null,
+      "name": "Vikram",
+      "nickname": "",
+      "avatar": "",
+      "role": "allrounder",
+      "battingStyle": "right",
+      "bowlingStyle": "none",
+      "createdAt": "2026-06-11T17:58:29.658Z",
+      "updatedAt": "2026-06-11T17:58:29.658Z"
+    },
+    {
+      "_id": "6a2af76777f173046a9a2478",
+      "userId": null,
+      "name": "Aman",
+      "nickname": "ty7ygi",
+      "avatar": "",
+      "role": "allrounder",
+      "battingStyle": "right",
+      "bowlingStyle": "none",
+      "createdAt": "2026-06-11T17:59:03.137Z",
+      "updatedAt": "2026-06-12T04:59:26.481Z"
+    },
+    {
+      "_id": "6a2b7d1c96ff7e03a78fe0e8",
+      "userId": null,
+      "name": "Sachin Tendulkar",
+      "nickname": "Master Blaster",
+      "avatar": "",
+      "role": "allrounder",
+      "battingStyle": "right",
+      "bowlingStyle": "none",
+      "createdAt": "2026-06-12T03:29:32.187Z",
+      "updatedAt": "2026-06-12T05:01:13.676Z"
+    },
+    {
+      "_id": "6a2b920663d8ca44827e332e",
+      "userId": null,
+      "name": "jhvft",
+      "nickname": "",
+      "avatar": "",
+      "role": "allrounder",
+      "battingStyle": "right",
+      "bowlingStyle": "none",
+      "createdAt": "2026-06-12T04:58:46.040Z",
+      "updatedAt": "2026-06-12T04:58:46.040Z"
+    }
+  ],
+  "teams": [
+    {
+      "_id": "6a2b8f1663d8ca44827e308f",
+      "userId": null,
+      "name": "Team Alpha",
+      "color": "#A3E635",
+      "logo": "🏏",
+      "players": [
+        "6a2af76777f173046a9a2478",
+        "6a2b7d1c96ff7e03a78fe0e8"
+      ],
+      "createdAt": "2026-06-12T04:46:14.961Z",
+      "updatedAt": "2026-06-12T04:46:14.961Z"
+    },
+    {
+      "_id": "6a2b8f1863d8ca44827e3091",
+      "userId": null,
+      "name": "Team Bravo",
+      "color": "#38BDF8",
+      "logo": "🏏",
+      "players": [
+        "6a2af72c77f173046a9a2474",
+        "6a2af74577f173046a9a2476"
+      ],
+      "createdAt": "2026-06-12T04:46:16.627Z",
+      "updatedAt": "2026-06-12T04:46:16.627Z"
+    }
+  ],
+  "matches": [
+    {
+      "_id": "6a2af78977f173046a9a247a",
+      "userId": null,
+      "sessionToken": "a2b5bbd8-32dd-4a75-afa9-6fc1b639a29d",
+      "teamA": {
+        "teamId": null,
+        "name": "Team Alpha",
+        "color": "#A3E635",
+        "players": [
+          "6a2af76777f173046a9a2478",
+          "6a2af70b77f173046a9a2472"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team Bravo",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af74577f173046a9a2476",
+          "6a2af72c77f173046a9a2474"
+        ]
+      },
+      "totalOvers": 6,
+      "venue": "",
+      "rules": {
+        "boundaryOut": true,
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        }
+      },
+      "status": "toss",
+      "innings": [],
+      "createdAt": "2026-06-11T17:59:37.237Z",
+      "updatedAt": "2026-06-11T17:59:37.237Z"
+    },
+    {
+      "_id": "6a2af7a577f173046a9a247d",
+      "userId": null,
+      "sessionToken": "d401c0b2-cb34-4bdf-bd66-9d79951fa7d2",
+      "teamA": {
+        "teamId": null,
+        "name": "Team Alpha",
+        "color": "#A3E635",
+        "players": [
+          "6a2af74577f173046a9a2476",
+          "6a2af70b77f173046a9a2472"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team Bravo",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af72c77f173046a9a2474",
+          "6a2af76777f173046a9a2478"
+        ]
+      },
+      "totalOvers": 20,
+      "venue": "",
+      "rules": {
+        "boundaryOut": true,
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        }
+      },
+      "status": "toss",
+      "innings": [],
+      "createdAt": "2026-06-11T18:00:05.866Z",
+      "updatedAt": "2026-06-11T18:00:05.866Z"
+    },
+    {
+      "_id": "6a2af7df77f173046a9a2480",
+      "userId": null,
+      "sessionToken": "94da09d6-b1ff-4b59-826d-e3eeb052c05c",
+      "teamA": {
+        "teamId": null,
+        "name": "Team Alpha",
+        "color": "#A3E635",
+        "players": [
+          "6a2af70b77f173046a9a2472",
+          "6a2af74577f173046a9a2476"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team Bravo",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af72c77f173046a9a2474",
+          "6a2af76777f173046a9a2478"
+        ]
+      },
+      "totalOvers": 3,
+      "venue": "",
+      "rules": {
+        "boundaryOut": true,
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        }
+      },
+      "status": "toss",
+      "innings": [],
+      "createdAt": "2026-06-11T18:01:03.832Z",
+      "updatedAt": "2026-06-11T18:01:03.832Z"
+    },
+    {
+      "_id": "6a2af80077f173046a9a2483",
+      "userId": null,
+      "sessionToken": "53a15027-ad68-4905-9d78-9b5b04cdea01",
+      "teamA": {
+        "teamId": null,
+        "name": "Team Alpha",
+        "color": "#A3E635",
+        "players": [
+          "6a2af74577f173046a9a2476",
+          "6a2af76777f173046a9a2478"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team Bravo",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af70b77f173046a9a2472",
+          "6a2af72c77f173046a9a2474"
+        ]
+      },
+      "totalOvers": 2,
+      "venue": "",
+      "rules": {
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "boundaryOut": true,
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        },
+        "maxBoundaryOuts": null
+      },
+      "status": "completed",
+      "innings": [
+        {
+          "battingTeam": "teamA",
+          "bowlingTeam": "teamB",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af72c77f173046a9a2474",
+              "runs": 4,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Cracking shot! The fielder didn't move!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2af84577f173046a9a248c"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af72c77f173046a9a2474",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Quick single taken. Smart cricket!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2af84b77f173046a9a2497"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af72c77f173046a9a2474",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "bowled",
+                "dismissedPlayerId": "6a2af76777f173046a9a2478"
+              },
+              "commentary": "Clean bowled! Didn't see that one coming!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2af86677f173046a9a24a4"
+            }
+          ],
+          "totalRuns": 5,
+          "totalWickets": 1,
+          "totalBalls": 3,
+          "totalOvers": 0.3,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2af81277f173046a9a2487"
+        },
+        {
+          "battingTeam": "teamB",
+          "bowlingTeam": "teamA",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 4,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Racing to the boundary! Beautiful timing!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2af89477f173046a9a24bc"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Nudged for one. Rotates the strike.",
+              "isLegal": true,
+              "isUndone": true,
+              "_id": "6a2af89c77f173046a9a24cf"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Nudged for one. Rotates the strike.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2af8b177f173046a9a24f4"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2af72c77f173046a9a2474"
+              },
+              "commentary": "BOUNDARY OUT! 🔴 That's the gully rule!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2af8ba77f173046a9a250b"
+            }
+          ],
+          "totalRuns": 11,
+          "totalWickets": 1,
+          "totalBalls": 3,
+          "totalOvers": 0.3,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2af86777f173046a9a24a9"
+        }
+      ],
+      "createdAt": "2026-06-11T18:01:36.077Z",
+      "updatedAt": "2026-06-11T18:04:43.270Z",
+      "toss": {
+        "winner": "teamA",
+        "decision": "bat"
+      },
+      "result": {
+        "winner": "teamB",
+        "margin": "won by 0 wickets"
+      },
+      "matchDate": "2026-06-11T18:01:54.303Z"
+    },
+    {
+      "_id": "6a2b7d9196ff7e03a78fe0ea",
+      "userId": null,
+      "sessionToken": "18fa272b-8cbd-44d1-a78f-143d09484272",
+      "teamA": {
+        "teamId": null,
+        "name": "Team AlphaIndestructibles",
+        "color": "#A3E635",
+        "players": [
+          "6a2af76777f173046a9a2478",
+          "6a2af72c77f173046a9a2474",
+          "6a2b7d1c96ff7e03a78fe0e8"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team BravoChallengers",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af74577f173046a9a2476",
+          "6a2af70b77f173046a9a2472"
+        ]
+      },
+      "totalOvers": 5,
+      "venue": "",
+      "rules": {
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "boundaryOut": true,
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        },
+        "maxBoundaryOuts": null
+      },
+      "status": "completed",
+      "innings": [
+        {
+          "battingTeam": "teamA",
+          "bowlingTeam": "teamB",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af74577f173046a9a2476",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Pushed into the gap. Easy single.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b7e1296ff7e03a78fe0f3"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af74577f173046a9a2476",
+              "runs": 4,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Cracking shot! The fielder didn't move!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b7e1c96ff7e03a78fe0fe"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af74577f173046a9a2476",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2af72c77f173046a9a2474"
+              },
+              "commentary": "The boundary out rule strikes! He's gone!",
+              "isLegal": true,
+              "isUndone": true,
+              "_id": "6a2b7e2796ff7e03a78fe10b"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af74577f173046a9a2476",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "bowled",
+                "dismissedPlayerId": "6a2af72c77f173046a9a2474"
+              },
+              "commentary": "BOWLED HIM! What a delivery!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b7e5c96ff7e03a78fe124"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 4,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af74577f173046a9a2476",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "bowled",
+                "dismissedPlayerId": "6a2b7d1c96ff7e03a78fe0e8"
+              },
+              "commentary": "TIMBER! 🪵 Stumps destroyed!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b7e8696ff7e03a78fe135"
+            }
+          ],
+          "totalRuns": 5,
+          "totalWickets": 2,
+          "totalBalls": 4,
+          "totalOvers": 0.4,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b7dae96ff7e03a78fe0ee"
+        },
+        {
+          "battingTeam": "teamB",
+          "bowlingTeam": "teamA",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af70b77f173046a9a2472",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Pushed into the gap. Easy single.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b7e9796ff7e03a78fe14b"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af70b77f173046a9a2472",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 4,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Cracking shot! The fielder didn't move!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b7ea496ff7e03a78fe162"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af70b77f173046a9a2472",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Quick single taken. Smart cricket!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b7eb196ff7e03a78fe17b"
+            }
+          ],
+          "totalRuns": 6,
+          "totalWickets": 0,
+          "totalBalls": 3,
+          "totalOvers": 0.3,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "Target achieved",
+          "_id": "6a2b7e8796ff7e03a78fe13a"
+        }
+      ],
+      "createdAt": "2026-06-12T03:31:29.418Z",
+      "updatedAt": "2026-06-12T03:36:18.543Z",
+      "toss": {
+        "winner": "teamA",
+        "decision": "bat"
+      },
+      "result": {
+        "winner": "teamB",
+        "margin": "won by 1 wicket"
+      },
+      "matchDate": "2026-06-12T03:31:58.189Z"
+    },
+    {
+      "_id": "6a2b8f1a63d8ca44827e3093",
+      "userId": null,
+      "sessionToken": "fc7b8d32-e2de-4329-bcba-3de9f6bb389a",
+      "teamA": {
+        "teamId": null,
+        "name": "Team Alpha",
+        "color": "#A3E635",
+        "players": [
+          "6a2af76777f173046a9a2478",
+          "6a2b7d1c96ff7e03a78fe0e8"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team Bravo",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af72c77f173046a9a2474",
+          "6a2af74577f173046a9a2476"
+        ]
+      },
+      "totalOvers": 6,
+      "venue": "",
+      "rules": {
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "boundaryOut": true,
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        },
+        "maxBoundaryOuts": null
+      },
+      "status": "completed",
+      "innings": [
+        {
+          "battingTeam": "teamB",
+          "bowlingTeam": "teamA",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Three runs! Misfield helps the batsman!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b8f2b63d8ca44827e309c"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Placed into the gap. They come back for two!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b8f2d63d8ca44827e30a7"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 1,
+              "extras": {
+                "type": "no_ball",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "No ball called. Extra run added.",
+              "isLegal": false,
+              "isUndone": false,
+              "_id": "6a2b8f2f63d8ca44827e30b4"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 1,
+              "extras": {
+                "type": "legside_wide",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Wide! Down the leg side.",
+              "isLegal": false,
+              "isUndone": false,
+              "_id": "6a2b8f3163d8ca44827e30c3"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 0,
+              "extras": {
+                "type": "offside_wide",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Straying off target. Wide called.",
+              "isLegal": false,
+              "isUndone": false,
+              "_id": "6a2b8f3463d8ca44827e30d4"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 0,
+              "extras": {
+                "type": "offside_wide",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Can't hit that! Wide ball.",
+              "isLegal": false,
+              "isUndone": false,
+              "_id": "6a2b8f3563d8ca44827e30e7"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Placed into the gap. They come back for two!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b8f3b63d8ca44827e30fc"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 4,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2af72c77f173046a9a2474"
+              },
+              "commentary": "OUT! Crossed the boundary — gully rules apply!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b8f3c63d8ca44827e3113"
+            }
+          ],
+          "totalRuns": 15,
+          "totalWickets": 1,
+          "totalBalls": 4,
+          "totalOvers": 0.4,
+          "extras": {
+            "wides": 1,
+            "noBalls": 1,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b8f2163d8ca44827e3097"
+        },
+        {
+          "battingTeam": "teamA",
+          "bowlingTeam": "teamB",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af72c77f173046a9a2474",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "run_out",
+                "dismissedPlayerId": "6a2af76777f173046a9a2478"
+              },
+              "commentary": "No run there! Sent back and caught short!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b8f5963d8ca44827e312f"
+            }
+          ],
+          "totalRuns": 0,
+          "totalWickets": 1,
+          "totalBalls": 1,
+          "totalOvers": 0.1,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b8f3c63d8ca44827e3118"
+        }
+      ],
+      "createdAt": "2026-06-12T04:46:18.338Z",
+      "updatedAt": "2026-06-12T04:47:21.538Z",
+      "toss": {
+        "winner": "teamB",
+        "decision": "bat"
+      },
+      "result": {
+        "winner": "teamB",
+        "margin": "won by 15 runs"
+      },
+      "matchDate": "2026-06-12T04:46:25.265Z"
+    },
+    {
+      "_id": "6a2b8fcd63d8ca44827e3145",
+      "userId": null,
+      "sessionToken": "e09af11b-62d6-4eab-8a26-bb64d9983ed6",
+      "teamA": {
+        "teamId": null,
+        "name": "Team Alpha",
+        "color": "#A3E635",
+        "players": [
+          "6a2af76777f173046a9a2478",
+          "6a2af74577f173046a9a2476",
+          "6a2af72c77f173046a9a2474"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team Bravo",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af70b77f173046a9a2472",
+          "6a2b7d1c96ff7e03a78fe0e8"
+        ]
+      },
+      "totalOvers": 5,
+      "venue": "",
+      "rules": {
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "boundaryOut": true,
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        },
+        "maxBoundaryOuts": null
+      },
+      "status": "completed",
+      "innings": [
+        {
+          "battingTeam": "teamB",
+          "bowlingTeam": "teamA",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Good running! Two taken!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b900e63d8ca44827e314e"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Three runs! Misfield helps the batsman!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b900f63d8ca44827e3159"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "retired",
+                "dismissedPlayerId": "6a2b7d1c96ff7e03a78fe0e8"
+              },
+              "commentary": "Walks off retired. Decent knock!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b907063d8ca44827e3166"
+            }
+          ],
+          "totalRuns": 5,
+          "totalWickets": 1,
+          "totalBalls": 3,
+          "totalOvers": 0.3,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b8fd263d8ca44827e3149"
+        },
+        {
+          "battingTeam": "teamA",
+          "bowlingTeam": "teamB",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Placed into the gap. They come back for two!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b907863d8ca44827e3178"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Three runs! Misfield helps the batsman!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b907963d8ca44827e318b"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2af74577f173046a9a2476"
+              },
+              "commentary": "BOUNDARY OUT! 🔴 That's the gully rule!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b907a63d8ca44827e31a0"
+            }
+          ],
+          "totalRuns": 11,
+          "totalWickets": 1,
+          "totalBalls": 3,
+          "totalOvers": 0.3,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "Target achieved",
+          "_id": "6a2b907163d8ca44827e316b"
+        }
+      ],
+      "createdAt": "2026-06-12T04:49:17.010Z",
+      "updatedAt": "2026-06-12T04:52:10.691Z",
+      "toss": {
+        "winner": "teamB",
+        "decision": "bat"
+      },
+      "result": {
+        "winner": "teamA",
+        "margin": "won by 1 wicket"
+      },
+      "matchDate": "2026-06-12T04:49:22.378Z"
+    },
+    {
+      "_id": "6a2b908763d8ca44827e31ae",
+      "userId": null,
+      "sessionToken": "d26fb456-6f1c-4798-819a-49fcaf5ce859",
+      "teamA": {
+        "teamId": null,
+        "name": "Team Alpha",
+        "color": "#A3E635",
+        "players": [
+          "6a2b7d1c96ff7e03a78fe0e8",
+          "6a2af76777f173046a9a2478",
+          "6a2af70b77f173046a9a2472"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team Bravo",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af74577f173046a9a2476",
+          "6a2af72c77f173046a9a2474"
+        ]
+      },
+      "totalOvers": 5,
+      "venue": "",
+      "rules": {
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "boundaryOut": true,
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        },
+        "maxBoundaryOuts": null
+      },
+      "status": "completed",
+      "innings": [
+        {
+          "battingTeam": "teamB",
+          "bowlingTeam": "teamA",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2b7d1c96ff7e03a78fe0e8",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Placed into the gap. They come back for two!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b908e63d8ca44827e31b7"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2b7d1c96ff7e03a78fe0e8",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Three runs! Misfield helps the batsman!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b908f63d8ca44827e31c2"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2b7d1c96ff7e03a78fe0e8",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Dot ball. Pressure building! 🔵",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b909263d8ca44827e31cf"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 4,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2b7d1c96ff7e03a78fe0e8",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Quick single taken. Smart cricket!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b909463d8ca44827e31de"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 5,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2b7d1c96ff7e03a78fe0e8",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Excellent running between the wickets! Three!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b909763d8ca44827e31ef"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 6,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2b7d1c96ff7e03a78fe0e8",
+              "runs": 4,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Boundary! Textbook cover drive!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b909963d8ca44827e3202"
+            },
+            {
+              "overNumber": 1,
+              "ballNumber": 1,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2b7d1c96ff7e03a78fe0e8",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "retired",
+                "dismissedPlayerId": "6a2af74577f173046a9a2476"
+              },
+              "commentary": "Retired! Making way for the next batter.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b90a663d8ca44827e3217"
+            }
+          ],
+          "totalRuns": 13,
+          "totalWickets": 1,
+          "totalBalls": 7,
+          "totalOvers": 1.1,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b908c63d8ca44827e31b2"
+        },
+        {
+          "battingTeam": "teamA",
+          "bowlingTeam": "teamB",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af74577f173046a9a2476",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Nudged for one. Rotates the strike.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b90ba63d8ca44827e3231"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af74577f173046a9a2476",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Excellent running between the wickets! Three!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b90bc63d8ca44827e324c"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af74577f173046a9a2476",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2b7d1c96ff7e03a78fe0e8"
+              },
+              "commentary": "BOUNDARY OUT! 🔴 That's the gully rule!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b90c563d8ca44827e3269"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 4,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af74577f173046a9a2476",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "bowled",
+                "dismissedPlayerId": "6a2af76777f173046a9a2478"
+              },
+              "commentary": "TIMBER! 🪵 Stumps destroyed!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b90d263d8ca44827e3288"
+            }
+          ],
+          "totalRuns": 4,
+          "totalWickets": 2,
+          "totalBalls": 4,
+          "totalOvers": 0.4,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b90a663d8ca44827e321c"
+        }
+      ],
+      "createdAt": "2026-06-12T04:52:23.985Z",
+      "updatedAt": "2026-06-12T04:53:39.143Z",
+      "toss": {
+        "winner": "teamB",
+        "decision": "bat"
+      },
+      "result": {
+        "winner": "teamB",
+        "margin": "won by 9 runs"
+      },
+      "matchDate": "2026-06-12T04:52:28.894Z"
+    },
+    {
+      "_id": "6a2b90f563d8ca44827e329b",
+      "userId": null,
+      "sessionToken": "aed94bac-e3f0-40d9-916f-1e095239e01c",
+      "teamA": {
+        "teamId": null,
+        "name": "Team Alpha",
+        "color": "#A3E635",
+        "players": [
+          "6a2af72c77f173046a9a2474",
+          "6a2af74577f173046a9a2476",
+          "6a2b7d1c96ff7e03a78fe0e8"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team Bravo",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af70b77f173046a9a2472",
+          "6a2af76777f173046a9a2478"
+        ]
+      },
+      "totalOvers": 5,
+      "venue": "",
+      "rules": {
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "boundaryOut": true,
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        },
+        "maxBoundaryOuts": null
+      },
+      "status": "completed",
+      "innings": [
+        {
+          "battingTeam": "teamA",
+          "bowlingTeam": "teamB",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Excellent running between the wickets! Three!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b90ff63d8ca44827e32a4"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Good running! Two taken!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b910063d8ca44827e32af"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Pushed into the gap. Easy single.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b910263d8ca44827e32bc"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 4,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Three runs! Misfield helps the batsman!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b910463d8ca44827e32cb"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 5,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Pushed into the gap. Easy single.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b910963d8ca44827e32dc"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 6,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2af72c77f173046a9a2474"
+              },
+              "commentary": "The boundary out rule strikes! He's gone!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b910b63d8ca44827e32ef"
+            },
+            {
+              "overNumber": 1,
+              "ballNumber": 1,
+              "batsmanId": "6a2af74577f173046a9a2476",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2af74577f173046a9a2476"
+              },
+              "commentary": "OUT! Crossed the boundary — gully rules apply!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b911963d8ca44827e3304"
+            }
+          ],
+          "totalRuns": 22,
+          "totalWickets": 2,
+          "totalBalls": 7,
+          "totalOvers": 1.1,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b90fc63d8ca44827e329f"
+        },
+        {
+          "battingTeam": "teamB",
+          "bowlingTeam": "teamA",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af70b77f173046a9a2472",
+              "bowlerId": "6a2af72c77f173046a9a2474",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2af70b77f173046a9a2472"
+              },
+              "commentary": "BOUNDARY OUT! 🔴 That's the gully rule!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b912063d8ca44827e331e"
+            }
+          ],
+          "totalRuns": 6,
+          "totalWickets": 1,
+          "totalBalls": 1,
+          "totalOvers": 0.1,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b911a63d8ca44827e3309"
+        }
+      ],
+      "createdAt": "2026-06-12T04:54:13.932Z",
+      "updatedAt": "2026-06-12T04:54:57.893Z",
+      "toss": {
+        "winner": "teamB",
+        "decision": "field"
+      },
+      "result": {
+        "winner": "teamA",
+        "margin": "won by 16 runs"
+      },
+      "matchDate": "2026-06-12T04:54:20.093Z"
+    },
+    {
+      "_id": "6a2b996163d8ca44827e333e",
+      "userId": null,
+      "sessionToken": "b955be00-cdd0-4b6c-b49f-f5d15eb7e720",
+      "teamA": {
+        "teamId": null,
+        "name": "Team Alpha",
+        "color": "#A3E635",
+        "players": [
+          "6a2af70b77f173046a9a2472",
+          "6a2af72c77f173046a9a2474",
+          "6a2b920663d8ca44827e332e"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "Team Bravo",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af76777f173046a9a2478",
+          "6a2b7d1c96ff7e03a78fe0e8",
+          "6a2af74577f173046a9a2476"
+        ]
+      },
+      "totalOvers": 5,
+      "venue": "",
+      "rules": {
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "boundaryOut": true,
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        },
+        "maxBoundaryOuts": null
+      },
+      "status": "completed",
+      "innings": [
+        {
+          "battingTeam": "teamB",
+          "bowlingTeam": "teamA",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Nudged for one. Rotates the strike.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b997e63d8ca44827e3347"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Good running! Two taken!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b99a063d8ca44827e3352"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Nudged for one. Rotates the strike.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b99a963d8ca44827e335f"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 4,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Placed into the gap. They come back for two!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b99ae63d8ca44827e336e"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 5,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Pushed into the gap. Easy single.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b99b063d8ca44827e337f"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 6,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Excellent running between the wickets! Three!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b99b363d8ca44827e3392"
+            },
+            {
+              "overNumber": 1,
+              "ballNumber": 1,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2af76777f173046a9a2478"
+              },
+              "commentary": "OUT! Crossed the boundary — gully rules apply!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b99b563d8ca44827e33a7"
+            },
+            {
+              "overNumber": 1,
+              "ballNumber": 2,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Good running! Two taken!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b99bd63d8ca44827e33be"
+            },
+            {
+              "overNumber": 1,
+              "ballNumber": 3,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Pushed into the gap. Easy single.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b99bf63d8ca44827e33d7"
+            },
+            {
+              "overNumber": 1,
+              "ballNumber": 4,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 3,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Three runs! Misfield helps the batsman!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b99fd63d8ca44827e33f2"
+            },
+            {
+              "overNumber": 1,
+              "ballNumber": 5,
+              "batsmanId": "6a2b7d1c96ff7e03a78fe0e8",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "run_out",
+                "dismissedPlayerId": "6a2af74577f173046a9a2476",
+                "fielderId": "6a2af72c77f173046a9a2474"
+              },
+              "commentary": "Terrible mix-up! That's a run out!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9a0c63d8ca44827e340f"
+            }
+          ],
+          "totalRuns": 22,
+          "totalWickets": 2,
+          "totalBalls": 11,
+          "totalOvers": 1.5,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b996763d8ca44827e3342"
+        },
+        {
+          "battingTeam": "teamA",
+          "bowlingTeam": "teamB",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af70b77f173046a9a2472",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "bowled",
+                "dismissedPlayerId": "6a2af70b77f173046a9a2472"
+              },
+              "commentary": "Clean bowled! Didn't see that one coming!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9a9763d8ca44827e3503"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af70b77f173046a9a2472",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "bowled",
+                "dismissedPlayerId": "6a2af72c77f173046a9a2474"
+              },
+              "commentary": "BOWLED HIM! What a delivery!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9a9b63d8ca44827e3526"
+            }
+          ],
+          "totalRuns": 0,
+          "totalWickets": 2,
+          "totalBalls": 2,
+          "totalOvers": 0.2,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b9a0c63d8ca44827e3414"
+        }
+      ],
+      "createdAt": "2026-06-12T05:30:09.859Z",
+      "updatedAt": "2026-06-12T05:35:24.204Z",
+      "toss": {
+        "winner": "teamB",
+        "decision": "bat"
+      },
+      "result": {
+        "winner": "teamB",
+        "margin": "won by 22 runs"
+      },
+      "matchDate": "2026-06-12T05:30:15.830Z"
+    },
+    {
+      "_id": "6a2b9abf63d8ca44827e353b",
+      "userId": null,
+      "sessionToken": "77019f72-01b2-402a-8a59-a405c8f88e02",
+      "teamA": {
+        "teamId": null,
+        "name": "ghiuhij",
+        "color": "#A3E635",
+        "players": [
+          "6a2af72c77f173046a9a2474",
+          "6a2af70b77f173046a9a2472",
+          "6a2b7d1c96ff7e03a78fe0e8"
+        ]
+      },
+      "teamB": {
+        "teamId": null,
+        "name": "cgbhj",
+        "color": "#38BDF8",
+        "players": [
+          "6a2af76777f173046a9a2478",
+          "6a2b920663d8ca44827e332e",
+          "6a2af74577f173046a9a2476"
+        ]
+      },
+      "totalOvers": 5,
+      "venue": "",
+      "rules": {
+        "offsideWide": {
+          "runs": 0,
+          "rebowl": true
+        },
+        "legsideWide": {
+          "runs": 1,
+          "rebowl": true
+        },
+        "boundaryOut": true,
+        "noBall": {
+          "runs": 1,
+          "freehit": false
+        },
+        "maxBoundaryOuts": null
+      },
+      "status": "completed",
+      "innings": [
+        {
+          "battingTeam": "teamB",
+          "bowlingTeam": "teamA",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Nudged for one. Rotates the strike.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9ac863d8ca44827e3544"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 2,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Placed into the gap. They come back for two!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9ac963d8ca44827e354f"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 1,
+              "extras": {
+                "type": "legside_wide",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Wide! Down the leg side.",
+              "isLegal": false,
+              "isUndone": false,
+              "_id": "6a2b9acb63d8ca44827e355c"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 1,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Pushed into the gap. Easy single.",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9acd63d8ca44827e356b"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 3,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 0,
+              "extras": {
+                "type": "offside_wide",
+                "runs": 0
+              },
+              "isWicket": false,
+              "commentary": "Can't hit that! Wide ball.",
+              "isLegal": false,
+              "isUndone": false,
+              "_id": "6a2b9acf63d8ca44827e357c"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 4,
+              "batsmanId": "6a2af76777f173046a9a2478",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2af76777f173046a9a2478"
+              },
+              "commentary": "The boundary out rule strikes! He's gone!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9ad263d8ca44827e358f"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 5,
+              "batsmanId": "6a2b920663d8ca44827e332e",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 6,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "boundary_out",
+                "dismissedPlayerId": "6a2b920663d8ca44827e332e"
+              },
+              "commentary": "BOUNDARY OUT! 🔴 That's the gully rule!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9add63d8ca44827e35a4"
+            }
+          ],
+          "totalRuns": 17,
+          "totalWickets": 2,
+          "totalBalls": 5,
+          "totalOvers": 0.5,
+          "extras": {
+            "wides": 1,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b9ac563d8ca44827e353f"
+        },
+        {
+          "battingTeam": "teamA",
+          "bowlingTeam": "teamB",
+          "balls": [
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "bowled",
+                "dismissedPlayerId": "6a2af72c77f173046a9a2474"
+              },
+              "commentary": "TIMBER! 🪵 Stumps destroyed!",
+              "isLegal": true,
+              "isUndone": true,
+              "_id": "6a2b9aeb63d8ca44827e35be"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 1,
+              "batsmanId": "6a2af72c77f173046a9a2474",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "bowled",
+                "dismissedPlayerId": "6a2af72c77f173046a9a2474"
+              },
+              "commentary": "BOWLED HIM! What a delivery!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9b3f63d8ca44827e3647"
+            },
+            {
+              "overNumber": 0,
+              "ballNumber": 2,
+              "batsmanId": "6a2af70b77f173046a9a2472",
+              "bowlerId": "6a2af76777f173046a9a2478",
+              "runs": 0,
+              "extras": {
+                "type": "none",
+                "runs": 0
+              },
+              "isWicket": true,
+              "wicket": {
+                "type": "bowled",
+                "dismissedPlayerId": "6a2af70b77f173046a9a2472"
+              },
+              "commentary": "TIMBER! 🪵 Stumps destroyed!",
+              "isLegal": true,
+              "isUndone": false,
+              "_id": "6a2b9b4263d8ca44827e3664"
+            }
+          ],
+          "totalRuns": 0,
+          "totalWickets": 2,
+          "totalBalls": 2,
+          "totalOvers": 0.2,
+          "extras": {
+            "wides": 0,
+            "noBalls": 0,
+            "byes": 0,
+            "legByes": 0
+          },
+          "completed": true,
+          "result": "All out",
+          "_id": "6a2b9ade63d8ca44827e35a9"
+        }
+      ],
+      "createdAt": "2026-06-12T05:35:59.834Z",
+      "updatedAt": "2026-06-12T05:38:10.717Z",
+      "toss": {
+        "winner": "teamB",
+        "decision": "bat"
+      },
+      "result": {
+        "winner": "teamB",
+        "margin": "won by 17 runs"
+      },
+      "matchDate": "2026-06-12T05:36:05.960Z"
+    }
+  ],
+  "commentaries": [
+    {
+      "_id": "6a2af84677f173046a9a248f",
+      "matchId": "6a2af80077f173046a9a2483",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 0
+      },
+      "text": "Cracking shot! The fielder didn't move!",
+      "type": "template",
+      "createdAt": "2026-06-11T18:02:46.470Z",
+      "updatedAt": "2026-06-11T18:02:46.470Z"
+    },
+    {
+      "_id": "6a2af84c77f173046a9a249a",
+      "matchId": "6a2af80077f173046a9a2483",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 1
+      },
+      "text": "Quick single taken. Smart cricket!",
+      "type": "template",
+      "createdAt": "2026-06-11T18:02:52.542Z",
+      "updatedAt": "2026-06-11T18:02:52.542Z"
+    },
+    {
+      "_id": "6a2af86777f173046a9a24a7",
+      "matchId": "6a2af80077f173046a9a2483",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 2
+      },
+      "text": "Clean bowled! Didn't see that one coming!",
+      "type": "template",
+      "createdAt": "2026-06-11T18:03:19.100Z",
+      "updatedAt": "2026-06-11T18:03:19.100Z"
+    },
+    {
+      "_id": "6a2af89577f173046a9a24bf",
+      "matchId": "6a2af80077f173046a9a2483",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 0
+      },
+      "text": "Racing to the boundary! Beautiful timing!",
+      "type": "template",
+      "createdAt": "2026-06-11T18:04:05.504Z",
+      "updatedAt": "2026-06-11T18:04:05.504Z"
+    },
+    {
+      "_id": "6a2af89c77f173046a9a24d2",
+      "matchId": "6a2af80077f173046a9a2483",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 1
+      },
+      "text": "Nudged for one. Rotates the strike.",
+      "type": "template",
+      "createdAt": "2026-06-11T18:04:12.980Z",
+      "updatedAt": "2026-06-11T18:04:12.980Z"
+    },
+    {
+      "_id": "6a2af8b277f173046a9a24f7",
+      "matchId": "6a2af80077f173046a9a2483",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 2
+      },
+      "text": "Nudged for one. Rotates the strike.",
+      "type": "template",
+      "createdAt": "2026-06-11T18:04:34.456Z",
+      "updatedAt": "2026-06-11T18:04:34.456Z"
+    },
+    {
+      "_id": "6a2af8bb77f173046a9a250e",
+      "matchId": "6a2af80077f173046a9a2483",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 3
+      },
+      "text": "BOUNDARY OUT! 🔴 That's the gully rule!",
+      "type": "template",
+      "createdAt": "2026-06-11T18:04:43.257Z",
+      "updatedAt": "2026-06-11T18:04:43.257Z"
+    },
+    {
+      "_id": "6a2b7e1296ff7e03a78fe0f6",
+      "matchId": "6a2b7d9196ff7e03a78fe0ea",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 0
+      },
+      "text": "Pushed into the gap. Easy single.",
+      "type": "template",
+      "createdAt": "2026-06-12T03:33:38.845Z",
+      "updatedAt": "2026-06-12T03:33:38.845Z"
+    },
+    {
+      "_id": "6a2b7e1c96ff7e03a78fe101",
+      "matchId": "6a2b7d9196ff7e03a78fe0ea",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 1
+      },
+      "text": "Cracking shot! The fielder didn't move!",
+      "type": "template",
+      "createdAt": "2026-06-12T03:33:48.779Z",
+      "updatedAt": "2026-06-12T03:33:48.779Z"
+    },
+    {
+      "_id": "6a2b7e2796ff7e03a78fe10e",
+      "matchId": "6a2b7d9196ff7e03a78fe0ea",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 2
+      },
+      "text": "The boundary out rule strikes! He's gone!",
+      "type": "template",
+      "createdAt": "2026-06-12T03:33:59.765Z",
+      "updatedAt": "2026-06-12T03:33:59.765Z"
+    },
+    {
+      "_id": "6a2b7e5c96ff7e03a78fe127",
+      "matchId": "6a2b7d9196ff7e03a78fe0ea",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 3
+      },
+      "text": "BOWLED HIM! What a delivery!",
+      "type": "template",
+      "createdAt": "2026-06-12T03:34:52.517Z",
+      "updatedAt": "2026-06-12T03:34:52.517Z"
+    },
+    {
+      "_id": "6a2b7e8796ff7e03a78fe138",
+      "matchId": "6a2b7d9196ff7e03a78fe0ea",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 4
+      },
+      "text": "TIMBER! 🪵 Stumps destroyed!",
+      "type": "template",
+      "createdAt": "2026-06-12T03:35:35.414Z",
+      "updatedAt": "2026-06-12T03:35:35.414Z"
+    },
+    {
+      "_id": "6a2b7e9796ff7e03a78fe14e",
+      "matchId": "6a2b7d9196ff7e03a78fe0ea",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 0
+      },
+      "text": "Pushed into the gap. Easy single.",
+      "type": "template",
+      "createdAt": "2026-06-12T03:35:51.852Z",
+      "updatedAt": "2026-06-12T03:35:51.852Z"
+    },
+    {
+      "_id": "6a2b7ea696ff7e03a78fe165",
+      "matchId": "6a2b7d9196ff7e03a78fe0ea",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 1
+      },
+      "text": "Cracking shot! The fielder didn't move!",
+      "type": "template",
+      "createdAt": "2026-06-12T03:36:06.999Z",
+      "updatedAt": "2026-06-12T03:36:06.999Z"
+    },
+    {
+      "_id": "6a2b7eb296ff7e03a78fe17e",
+      "matchId": "6a2b7d9196ff7e03a78fe0ea",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 2
+      },
+      "text": "Quick single taken. Smart cricket!",
+      "type": "template",
+      "createdAt": "2026-06-12T03:36:18.454Z",
+      "updatedAt": "2026-06-12T03:36:18.454Z"
+    },
+    {
+      "_id": "6a2b8f2c63d8ca44827e309f",
+      "matchId": "6a2b8f1a63d8ca44827e3093",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 0
+      },
+      "text": "Three runs! Misfield helps the batsman!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:46:36.794Z",
+      "updatedAt": "2026-06-12T04:46:36.794Z"
+    },
+    {
+      "_id": "6a2b8f2e63d8ca44827e30aa",
+      "matchId": "6a2b8f1a63d8ca44827e3093",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 1
+      },
+      "text": "Placed into the gap. They come back for two!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:46:38.078Z",
+      "updatedAt": "2026-06-12T04:46:38.078Z"
+    },
+    {
+      "_id": "6a2b8f3063d8ca44827e30b7",
+      "matchId": "6a2b8f1a63d8ca44827e3093",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 2
+      },
+      "text": "No ball called. Extra run added.",
+      "type": "template",
+      "createdAt": "2026-06-12T04:46:40.148Z",
+      "updatedAt": "2026-06-12T04:46:40.148Z"
+    },
+    {
+      "_id": "6a2b8f3263d8ca44827e30c6",
+      "matchId": "6a2b8f1a63d8ca44827e3093",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 3
+      },
+      "text": "Wide! Down the leg side.",
+      "type": "template",
+      "createdAt": "2026-06-12T04:46:42.161Z",
+      "updatedAt": "2026-06-12T04:46:42.161Z"
+    },
+    {
+      "_id": "6a2b8f3463d8ca44827e30d7",
+      "matchId": "6a2b8f1a63d8ca44827e3093",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 4
+      },
+      "text": "Straying off target. Wide called.",
+      "type": "template",
+      "createdAt": "2026-06-12T04:46:44.386Z",
+      "updatedAt": "2026-06-12T04:46:44.386Z"
+    },
+    {
+      "_id": "6a2b8f3663d8ca44827e30ea",
+      "matchId": "6a2b8f1a63d8ca44827e3093",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 5
+      },
+      "text": "Can't hit that! Wide ball.",
+      "type": "template",
+      "createdAt": "2026-06-12T04:46:46.011Z",
+      "updatedAt": "2026-06-12T04:46:46.011Z"
+    },
+    {
+      "_id": "6a2b8f3b63d8ca44827e30ff",
+      "matchId": "6a2b8f1a63d8ca44827e3093",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 6
+      },
+      "text": "Placed into the gap. They come back for two!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:46:51.508Z",
+      "updatedAt": "2026-06-12T04:46:51.508Z"
+    },
+    {
+      "_id": "6a2b8f3c63d8ca44827e3116",
+      "matchId": "6a2b8f1a63d8ca44827e3093",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 7
+      },
+      "text": "OUT! Crossed the boundary — gully rules apply!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:46:52.977Z",
+      "updatedAt": "2026-06-12T04:46:52.977Z"
+    },
+    {
+      "_id": "6a2b8f5963d8ca44827e3132",
+      "matchId": "6a2b8f1a63d8ca44827e3093",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 0
+      },
+      "text": "No run there! Sent back and caught short!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:47:21.529Z",
+      "updatedAt": "2026-06-12T04:47:21.529Z"
+    },
+    {
+      "_id": "6a2b900e63d8ca44827e3151",
+      "matchId": "6a2b8fcd63d8ca44827e3145",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 0
+      },
+      "text": "Good running! Two taken!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:50:22.727Z",
+      "updatedAt": "2026-06-12T04:50:22.727Z"
+    },
+    {
+      "_id": "6a2b901063d8ca44827e315c",
+      "matchId": "6a2b8fcd63d8ca44827e3145",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 1
+      },
+      "text": "Three runs! Misfield helps the batsman!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:50:24.122Z",
+      "updatedAt": "2026-06-12T04:50:24.122Z"
+    },
+    {
+      "_id": "6a2b907163d8ca44827e3169",
+      "matchId": "6a2b8fcd63d8ca44827e3145",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 2
+      },
+      "text": "Walks off retired. Decent knock!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:01.406Z",
+      "updatedAt": "2026-06-12T04:52:01.406Z"
+    },
+    {
+      "_id": "6a2b907863d8ca44827e317b",
+      "matchId": "6a2b8fcd63d8ca44827e3145",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 0
+      },
+      "text": "Placed into the gap. They come back for two!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:08.625Z",
+      "updatedAt": "2026-06-12T04:52:08.626Z"
+    },
+    {
+      "_id": "6a2b907963d8ca44827e318e",
+      "matchId": "6a2b8fcd63d8ca44827e3145",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 1
+      },
+      "text": "Three runs! Misfield helps the batsman!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:09.729Z",
+      "updatedAt": "2026-06-12T04:52:09.729Z"
+    },
+    {
+      "_id": "6a2b907a63d8ca44827e31a3",
+      "matchId": "6a2b8fcd63d8ca44827e3145",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 2
+      },
+      "text": "BOUNDARY OUT! 🔴 That's the gully rule!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:10.682Z",
+      "updatedAt": "2026-06-12T04:52:10.682Z"
+    },
+    {
+      "_id": "6a2b908e63d8ca44827e31ba",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 0
+      },
+      "text": "Placed into the gap. They come back for two!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:30.906Z",
+      "updatedAt": "2026-06-12T04:52:30.906Z"
+    },
+    {
+      "_id": "6a2b909063d8ca44827e31c5",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 1
+      },
+      "text": "Three runs! Misfield helps the batsman!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:32.160Z",
+      "updatedAt": "2026-06-12T04:52:32.160Z"
+    },
+    {
+      "_id": "6a2b909363d8ca44827e31d2",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 2
+      },
+      "text": "Dot ball. Pressure building! 🔵",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:35.054Z",
+      "updatedAt": "2026-06-12T04:52:35.054Z"
+    },
+    {
+      "_id": "6a2b909663d8ca44827e31e1",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 3
+      },
+      "text": "Quick single taken. Smart cricket!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:38.165Z",
+      "updatedAt": "2026-06-12T04:52:38.165Z"
+    },
+    {
+      "_id": "6a2b909763d8ca44827e31f2",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 4
+      },
+      "text": "Excellent running between the wickets! Three!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:39.983Z",
+      "updatedAt": "2026-06-12T04:52:39.983Z"
+    },
+    {
+      "_id": "6a2b909963d8ca44827e3205",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 5
+      },
+      "text": "Boundary! Textbook cover drive!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:41.943Z",
+      "updatedAt": "2026-06-12T04:52:41.943Z"
+    },
+    {
+      "_id": "6a2b90a663d8ca44827e321a",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 6
+      },
+      "text": "Retired! Making way for the next batter.",
+      "type": "template",
+      "createdAt": "2026-06-12T04:52:54.576Z",
+      "updatedAt": "2026-06-12T04:52:54.576Z"
+    },
+    {
+      "_id": "6a2b90ba63d8ca44827e3234",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 0
+      },
+      "text": "Nudged for one. Rotates the strike.",
+      "type": "template",
+      "createdAt": "2026-06-12T04:53:14.822Z",
+      "updatedAt": "2026-06-12T04:53:14.822Z"
+    },
+    {
+      "_id": "6a2b90bd63d8ca44827e324f",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 1
+      },
+      "text": "Excellent running between the wickets! Three!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:53:17.162Z",
+      "updatedAt": "2026-06-12T04:53:17.162Z"
+    },
+    {
+      "_id": "6a2b90c663d8ca44827e326c",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 2
+      },
+      "text": "BOUNDARY OUT! 🔴 That's the gully rule!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:53:26.150Z",
+      "updatedAt": "2026-06-12T04:53:26.150Z"
+    },
+    {
+      "_id": "6a2b90d363d8ca44827e328b",
+      "matchId": "6a2b908763d8ca44827e31ae",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 3
+      },
+      "text": "TIMBER! 🪵 Stumps destroyed!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:53:39.136Z",
+      "updatedAt": "2026-06-12T04:53:39.136Z"
+    },
+    {
+      "_id": "6a2b90ff63d8ca44827e32a7",
+      "matchId": "6a2b90f563d8ca44827e329b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 0
+      },
+      "text": "Excellent running between the wickets! Three!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:54:23.887Z",
+      "updatedAt": "2026-06-12T04:54:23.887Z"
+    },
+    {
+      "_id": "6a2b910163d8ca44827e32b2",
+      "matchId": "6a2b90f563d8ca44827e329b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 1
+      },
+      "text": "Good running! Two taken!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:54:25.133Z",
+      "updatedAt": "2026-06-12T04:54:25.133Z"
+    },
+    {
+      "_id": "6a2b910363d8ca44827e32bf",
+      "matchId": "6a2b90f563d8ca44827e329b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 2
+      },
+      "text": "Pushed into the gap. Easy single.",
+      "type": "template",
+      "createdAt": "2026-06-12T04:54:27.864Z",
+      "updatedAt": "2026-06-12T04:54:27.864Z"
+    },
+    {
+      "_id": "6a2b910563d8ca44827e32ce",
+      "matchId": "6a2b90f563d8ca44827e329b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 3
+      },
+      "text": "Three runs! Misfield helps the batsman!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:54:29.293Z",
+      "updatedAt": "2026-06-12T04:54:29.293Z"
+    },
+    {
+      "_id": "6a2b910963d8ca44827e32df",
+      "matchId": "6a2b90f563d8ca44827e329b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 4
+      },
+      "text": "Pushed into the gap. Easy single.",
+      "type": "template",
+      "createdAt": "2026-06-12T04:54:33.623Z",
+      "updatedAt": "2026-06-12T04:54:33.623Z"
+    },
+    {
+      "_id": "6a2b910c63d8ca44827e32f2",
+      "matchId": "6a2b90f563d8ca44827e329b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 5
+      },
+      "text": "The boundary out rule strikes! He's gone!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:54:36.014Z",
+      "updatedAt": "2026-06-12T04:54:36.014Z"
+    },
+    {
+      "_id": "6a2b911a63d8ca44827e3307",
+      "matchId": "6a2b90f563d8ca44827e329b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 6
+      },
+      "text": "OUT! Crossed the boundary — gully rules apply!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:54:50.093Z",
+      "updatedAt": "2026-06-12T04:54:50.093Z"
+    },
+    {
+      "_id": "6a2b912163d8ca44827e3321",
+      "matchId": "6a2b90f563d8ca44827e329b",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 0
+      },
+      "text": "BOUNDARY OUT! 🔴 That's the gully rule!",
+      "type": "template",
+      "createdAt": "2026-06-12T04:54:57.883Z",
+      "updatedAt": "2026-06-12T04:54:57.883Z"
+    },
+    {
+      "_id": "6a2b997f63d8ca44827e334a",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 0
+      },
+      "text": "Nudged for one. Rotates the strike.",
+      "type": "template",
+      "createdAt": "2026-06-12T05:30:39.463Z",
+      "updatedAt": "2026-06-12T05:30:39.463Z"
+    },
+    {
+      "_id": "6a2b99a163d8ca44827e3355",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 1
+      },
+      "text": "Good running! Two taken!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:31:13.151Z",
+      "updatedAt": "2026-06-12T05:31:13.151Z"
+    },
+    {
+      "_id": "6a2b99a963d8ca44827e3362",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 2
+      },
+      "text": "Nudged for one. Rotates the strike.",
+      "type": "template",
+      "createdAt": "2026-06-12T05:31:21.792Z",
+      "updatedAt": "2026-06-12T05:31:21.792Z"
+    },
+    {
+      "_id": "6a2b99ae63d8ca44827e3371",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 3
+      },
+      "text": "Placed into the gap. They come back for two!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:31:26.545Z",
+      "updatedAt": "2026-06-12T05:31:26.545Z"
+    },
+    {
+      "_id": "6a2b99b063d8ca44827e3382",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 4
+      },
+      "text": "Pushed into the gap. Easy single.",
+      "type": "template",
+      "createdAt": "2026-06-12T05:31:28.936Z",
+      "updatedAt": "2026-06-12T05:31:28.936Z"
+    },
+    {
+      "_id": "6a2b99b363d8ca44827e3395",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 5
+      },
+      "text": "Excellent running between the wickets! Three!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:31:31.458Z",
+      "updatedAt": "2026-06-12T05:31:31.458Z"
+    },
+    {
+      "_id": "6a2b99b563d8ca44827e33aa",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 6
+      },
+      "text": "OUT! Crossed the boundary — gully rules apply!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:31:33.917Z",
+      "updatedAt": "2026-06-12T05:31:33.917Z"
+    },
+    {
+      "_id": "6a2b99be63d8ca44827e33c1",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 7
+      },
+      "text": "Good running! Two taken!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:31:42.194Z",
+      "updatedAt": "2026-06-12T05:31:42.194Z"
+    },
+    {
+      "_id": "6a2b99bf63d8ca44827e33da",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 8
+      },
+      "text": "Pushed into the gap. Easy single.",
+      "type": "template",
+      "createdAt": "2026-06-12T05:31:43.932Z",
+      "updatedAt": "2026-06-12T05:31:43.932Z"
+    },
+    {
+      "_id": "6a2b99fe63d8ca44827e33f5",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 9
+      },
+      "text": "Three runs! Misfield helps the batsman!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:32:46.075Z",
+      "updatedAt": "2026-06-12T05:32:46.075Z"
+    },
+    {
+      "_id": "6a2b9a0c63d8ca44827e3412",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 10
+      },
+      "text": "Terrible mix-up! That's a run out!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:33:00.704Z",
+      "updatedAt": "2026-06-12T05:33:00.704Z"
+    },
+    {
+      "_id": "6a2b9a9863d8ca44827e3506",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 0
+      },
+      "text": "Clean bowled! Didn't see that one coming!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:35:20.050Z",
+      "updatedAt": "2026-06-12T05:35:20.050Z"
+    },
+    {
+      "_id": "6a2b9a9c63d8ca44827e3529",
+      "matchId": "6a2b996163d8ca44827e333e",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 1
+      },
+      "text": "BOWLED HIM! What a delivery!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:35:24.195Z",
+      "updatedAt": "2026-06-12T05:35:24.195Z"
+    },
+    {
+      "_id": "6a2b9ac863d8ca44827e3547",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 0
+      },
+      "text": "Nudged for one. Rotates the strike.",
+      "type": "template",
+      "createdAt": "2026-06-12T05:36:08.854Z",
+      "updatedAt": "2026-06-12T05:36:08.854Z"
+    },
+    {
+      "_id": "6a2b9aca63d8ca44827e3552",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 1
+      },
+      "text": "Placed into the gap. They come back for two!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:36:10.169Z",
+      "updatedAt": "2026-06-12T05:36:10.169Z"
+    },
+    {
+      "_id": "6a2b9acc63d8ca44827e355f",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 2
+      },
+      "text": "Wide! Down the leg side.",
+      "type": "template",
+      "createdAt": "2026-06-12T05:36:12.261Z",
+      "updatedAt": "2026-06-12T05:36:12.261Z"
+    },
+    {
+      "_id": "6a2b9acd63d8ca44827e356e",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 3
+      },
+      "text": "Pushed into the gap. Easy single.",
+      "type": "template",
+      "createdAt": "2026-06-12T05:36:13.534Z",
+      "updatedAt": "2026-06-12T05:36:13.534Z"
+    },
+    {
+      "_id": "6a2b9ad063d8ca44827e357f",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 4
+      },
+      "text": "Can't hit that! Wide ball.",
+      "type": "template",
+      "createdAt": "2026-06-12T05:36:16.052Z",
+      "updatedAt": "2026-06-12T05:36:16.052Z"
+    },
+    {
+      "_id": "6a2b9ad363d8ca44827e3592",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 5
+      },
+      "text": "The boundary out rule strikes! He's gone!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:36:19.077Z",
+      "updatedAt": "2026-06-12T05:36:19.077Z"
+    },
+    {
+      "_id": "6a2b9ade63d8ca44827e35a7",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 0,
+        "ballIndex": 6
+      },
+      "text": "BOUNDARY OUT! 🔴 That's the gully rule!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:36:30.589Z",
+      "updatedAt": "2026-06-12T05:36:30.589Z"
+    },
+    {
+      "_id": "6a2b9aec63d8ca44827e35c1",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 0
+      },
+      "text": "TIMBER! 🪵 Stumps destroyed!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:36:44.644Z",
+      "updatedAt": "2026-06-12T05:36:44.644Z"
+    },
+    {
+      "_id": "6a2b9b4063d8ca44827e364a",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 1
+      },
+      "text": "BOWLED HIM! What a delivery!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:38:08.497Z",
+      "updatedAt": "2026-06-12T05:38:08.497Z"
+    },
+    {
+      "_id": "6a2b9b4263d8ca44827e3667",
+      "matchId": "6a2b9abf63d8ca44827e353b",
+      "ballRef": {
+        "inningsIndex": 1,
+        "ballIndex": 2
+      },
+      "text": "TIMBER! 🪵 Stumps destroyed!",
+      "type": "template",
+      "createdAt": "2026-06-12T05:38:10.707Z",
+      "updatedAt": "2026-06-12T05:38:10.707Z"
+    }
+  ]
+}

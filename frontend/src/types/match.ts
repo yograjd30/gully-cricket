@@ -1,4 +1,4 @@
-export type ExtraType = 'none' | 'offside_wide' | 'legside_wide' | 'no_ball' | 'bye' | 'leg_bye';
+export type ExtraType = 'none' | 'offside_wide' | 'legside_wide' | 'no_ball' | 'crease_no_ball' | 'height_no_ball' | 'bye' | 'leg_bye';
 export type WicketType = 'bowled' | 'caught' | 'run_out' | 'hit_wicket' | 'boundary_out' | 'retired';
 
 export interface MatchRules {
@@ -26,6 +26,8 @@ export interface Ball {
   ballNumber: number;
   batsmanId: string;
   bowlerId: string;
+  strikerId?: string;
+  nonStrikerId?: string;
   runs: number;
   extras: {
     type: ExtraType;
@@ -49,6 +51,8 @@ export interface Innings {
   _id?: string;
   battingTeam: 'teamA' | 'teamB';
   bowlingTeam: 'teamA' | 'teamB';
+  strikerId?: string;
+  nonStrikerId?: string;
   balls: Ball[];
   totalRuns: number;
   totalWickets: number;

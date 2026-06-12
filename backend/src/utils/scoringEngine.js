@@ -13,66 +13,53 @@
 export function processBall(inningsState, delivery, matchRules) {
   const extras = delivery.extras || { type: 'none', runs: 0 };
   let legalBall = true;
-  let runsScored = delivery.runs || 0;
+  let runsOffBat = delivery.runs || 0;
   let extraRuns = 0;
 
-  // ─── WIDE LOGIC ────────────────────────────────────────
   if (extras.type === 'offside_wide') {
-    extraRuns = matchRules.offsideWide?.runs ?? 0; // 0 by default
-    runsScored = extraRuns;
-    legalBall = false; // re-bowl
+    extraRuns = matchRules.offsideWide?.runs ?? 0;
+    runsOffBat = 0;
+    legalBall = false;
     inningsState.extras.wides += extraRuns;
-  }
-
-  if (extras.type === 'legside_wide') {
-    extraRuns = matchRules.legsideWide?.runs ?? 1; // 1 by default
-    runsScored = extraRuns;
-    legalBall = false; // re-bowl
+  } else if (extras.type === 'legside_wide') {
+    extraRuns = matchRules.legsideWide?.runs ?? 1;
+    runsOffBat = 0;
+    legalBall = false;
     inningsState.extras.wides += extraRuns;
-  }
-
-  // ─── NO BALL LOGIC ─────────────────────────────────────
-  if (extras.type === 'no_ball') {
-    extraRuns = matchRules.noBall?.runs ?? 1;
-    runsScored = delivery.runs + extraRuns;
+  } else if (extras.type === 'no_ball' || extras.type === 'crease_no_ball') {
+    extraRuns = 1;
     legalBall = false;
     inningsState.extras.noBalls += extraRuns;
-  }
-
-  // ─── BYE / LEG BYE LOGIC ──────────────────────────────
-  if (extras.type === 'bye') {
-    runsScored = delivery.runs;
-    inningsState.extras.byes += delivery.runs;
+  } else if (extras.type === 'height_no_ball') {
+    extraRuns = 0;
+    legalBall = false;
+    inningsState.extras.noBalls += extraRuns;
+  } else if (extras.type === 'bye') {
+    extraRuns = delivery.runs || 0;
+    runsOffBat = 0;
+    legalBall = true;
+    inningsState.extras.byes += extraRuns;
+  } else if (extras.type === 'leg_bye') {
+    extraRuns = delivery.runs || 0;
+    runsOffBat = 0;
+    legalBall = true;
+    inningsState.extras.legByes += extraRuns;
+  } else {
+    extraRuns = 0;
     legalBall = true;
   }
 
-  if (extras.type === 'leg_bye') {
-    runsScored = delivery.runs;
-    inningsState.extras.legByes += delivery.runs;
-    legalBall = true;
-  }
-
-  // ─── BOUNDARY OUT LOGIC ────────────────────────────────
-  if (matchRules.boundaryOut && delivery.runs === 6 && extras.type === 'none') {
-    delivery.isWicket = true;
-    delivery.wicket = {
-      type: 'boundary_out',
-      dismissedPlayerId: delivery.batsmanId,
-    };
-    runsScored = 6; // runs still count before wicket
-    legalBall = true;
-  }
-
-  // ─── UPDATE TOTALS ─────────────────────────────────────
-  inningsState.totalRuns += runsScored;
+  const deliveryTotalRuns = runsOffBat + extraRuns;
+  inningsState.totalRuns += deliveryTotalRuns;
 
   if (delivery.isWicket) {
-    inningsState.totalWickets += 1;
+    if (delivery.wicket?.type !== 'retired') {
+      inningsState.totalWickets += 1;
+    }
   }
 
   if (legalBall) {
     inningsState.totalBalls += 1;
-    // Overs as X.Y format (e.g., 2.3 = 2 overs and 3 balls)
     inningsState.totalOvers = parseFloat(
       Math.floor(inningsState.totalBalls / 6) +
       '.' +
@@ -80,7 +67,6 @@ export function processBall(inningsState, delivery, matchRules) {
     );
   }
 
-  // ─── COMPUTE BALL/OVER NUMBER ──────────────────────────
   const completedOvers = Math.floor((inningsState.totalBalls - (legalBall ? 1 : 0)) / 6);
   const ballInOver = legalBall
     ? ((inningsState.totalBalls - 1) % 6) + 1
@@ -88,9 +74,30 @@ export function processBall(inningsState, delivery, matchRules) {
 
   delivery.overNumber = completedOvers;
   delivery.ballNumber = ballInOver;
-  delivery.runs = runsScored;
+  delivery.runs = runsOffBat;
+  delivery.extras = {
+    type: extras.type,
+    runs: extraRuns,
+  };
   delivery.isLegal = legalBall;
-  delivery.extras = extras;
+
+  if (inningsState.strikerId && inningsState.nonStrikerId) {
+    delivery.strikerId = inningsState.strikerId;
+    delivery.nonStrikerId = inningsState.nonStrikerId;
+
+    const runsRan = runsOffBat + (extras.type === 'bye' || extras.type === 'leg_bye' ? extraRuns : 0);
+    if (runsRan % 2 !== 0) {
+      const temp = inningsState.strikerId;
+      inningsState.strikerId = inningsState.nonStrikerId;
+      inningsState.nonStrikerId = temp;
+    }
+
+    if (legalBall && inningsState.totalBalls % 6 === 0) {
+      const temp = inningsState.strikerId;
+      inningsState.strikerId = inningsState.nonStrikerId;
+      inningsState.nonStrikerId = temp;
+    }
+  }
 
   inningsState.balls.push(delivery);
   return inningsState;
@@ -154,7 +161,6 @@ export function calculateResult(match) {
   }
 
   if (inn2.totalRuns > inn1.totalRuns) {
-    // Team batting second won
     const wicketsLeft = (match[inn2.battingTeam]?.players?.length || 11) - 1 - inn2.totalWickets;
     return {
       winner: inn2.battingTeam,
@@ -162,14 +168,9 @@ export function calculateResult(match) {
     };
   }
 
-  if (inn1.totalRuns > inn2.totalRuns) {
-    // Team batting first won
-    const runMargin = inn1.totalRuns - inn2.totalRuns;
-    return {
-      winner: inn1.battingTeam,
-      margin: `won by ${runMargin} run${runMargin !== 1 ? 's' : ''}`,
-    };
-  }
-
-  return { winner: 'tie', margin: 'Match tied!' };
+  const runMargin = inn1.totalRuns - inn2.totalRuns;
+  return {
+    winner: inn1.battingTeam,
+    margin: runMargin === 0 ? 'won (scores level, defending team wins)' : `won by ${runMargin} run${runMargin !== 1 ? 's' : ''}`,
+  };
 }

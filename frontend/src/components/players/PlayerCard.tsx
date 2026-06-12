@@ -77,7 +77,7 @@ export default function PlayerCard({ player, onEdit, onDelete, onViewStats }: Pr
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex flex-col gap-1">
           <button
             onClick={() => onEdit(player)}
             className="p-1.5 rounded-lg hover:bg-crease-line/50 text-muted-text hover:text-sky-six transition-colors"

@@ -147,8 +147,10 @@ export const getPlayerStats = asyncHandler(async (req, res) => {
         // Bowling stats
         if (ball.bowlerId?.toString() === playerId) {
           if (ball.isLegal) totalBallsBowled++;
-          totalRunsConceded += ball.runs + (ball.extras?.runs || 0);
-          if (ball.isWicket && ball.wicket?.type !== 'run_out') {
+          const isBowlerExtra = ball.extras?.type === 'offside_wide' || ball.extras?.type === 'legside_wide' || ball.extras?.type === 'no_ball' || ball.extras?.type === 'crease_no_ball' || ball.extras?.type === 'height_no_ball';
+          const extraConceded = isBowlerExtra ? (ball.extras?.runs || 0) : 0;
+          totalRunsConceded += (ball.runs || 0) + extraConceded;
+          if (ball.isWicket && ball.wicket?.type !== 'run_out' && ball.wicket?.type !== 'retired') {
             totalWickets++;
           }
         }

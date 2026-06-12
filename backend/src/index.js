@@ -41,15 +41,20 @@ const rawMongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/gully-
 const isPlaceholder = rawMongoUri.includes('<cluster>') || rawMongoUri.includes('<user>') || rawMongoUri.includes('<password>');
 const mongoUrl = isPlaceholder ? 'mongodb://127.0.0.1:27017/gully-cricket-hq' : rawMongoUri;
 
+const useMockDb = isPlaceholder || process.env.USE_MOCK_DB === 'true';
+const sessionStore = useMockDb
+  ? new session.MemoryStore()
+  : MongoStore.create({
+      mongoUrl: mongoUrl,
+      collectionName: 'sessions',
+      ttl: 7 * 24 * 60 * 60, // 7 days
+    });
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'gully-cricket-dev-secret',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: mongoUrl,
-    collectionName: 'sessions',
-    ttl: 7 * 24 * 60 * 60, // 7 days
-  }),
+  store: sessionStore,
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
