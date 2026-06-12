@@ -5,8 +5,14 @@
   "installCommand": "npm run install:all",
   "framework": null,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/((?!api|assets|sw\\.js|workbox|manifest|pwa|vite|favicon).*)", "destination": "/index.html" }
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/((?!api|assets|sw\\.js|workbox|manifest|pwa|vite|favicon).*)",
+      "destination": "/index.html"
+    }
   ],
   "functions": {
     "api/index.js": {
