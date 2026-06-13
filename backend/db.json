@@ -84,6 +84,18 @@
       "bowlingStyle": "none",
       "createdAt": "2026-06-12T11:31:41.241Z",
       "updatedAt": "2026-06-12T11:31:41.241Z"
+    },
+    {
+      "_id": "6a2cbd88b43ce5c5d2e810b2",
+      "userId": null,
+      "name": "Test Player",
+      "nickname": "",
+      "avatar": "",
+      "role": "batsman",
+      "battingStyle": "right",
+      "bowlingStyle": "none",
+      "createdAt": "2026-06-13T02:16:40.596Z",
+      "updatedAt": "2026-06-13T02:16:40.596Z"
     }
   ],
   "teams": [

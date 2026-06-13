@@ -4,7 +4,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DB_FILE = path.join(__dirname, '../../db.json');
+const DB_FILE = process.env.VERCEL 
+  ? '/tmp/db.json' 
+  : path.join(__dirname, '../../db.json');
 
 // ─── Mongoose Connection Caching (for Vercel serverless) ─────
 let cached = global.__mongooseCache;
@@ -342,12 +344,11 @@ const connectDB = async () => {
   let uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/gully-cricket-hq';
   const isPlaceholder = uri.includes('<cluster>') || uri.includes('<user>') || uri.includes('<password>');
   
-  // On Vercel, we MUST have a real MongoDB URI (filesystem is read-only)
+  // On Vercel, if no MongoDB is provided, fallback to /tmp/db.json so the app doesn't crash (data will be ephemeral)
   if (process.env.VERCEL && (isPlaceholder || !process.env.MONGODB_URI)) {
-    throw new Error(
-      'MONGODB_URI environment variable is required on Vercel. ' +
-      'Set it in your Vercel project settings with a MongoDB Atlas connection string.'
-    );
+    console.warn('MONGODB_URI not found on Vercel. Falling back to ephemeral /tmp/db.json');
+    setupMockDb();
+    return;
   }
 
   if (isPlaceholder || process.env.USE_MOCK_DB === 'true') {

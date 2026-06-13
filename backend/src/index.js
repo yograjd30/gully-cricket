@@ -64,16 +64,18 @@ app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 // ─── Sessions ────────────────────────────────────────────
+const hasMongoUri = !!process.env.MONGODB_URI;
 const rawMongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/gully-cricket-hq';
 const isPlaceholder = rawMongoUri.includes('<cluster>') || rawMongoUri.includes('<user>') || rawMongoUri.includes('<password>');
 const mongoUrl = isPlaceholder ? 'mongodb://127.0.0.1:27017/gully-cricket-hq' : rawMongoUri;
 
-const useMockDb = isPlaceholder || process.env.USE_MOCK_DB === 'true';
+const useMockDb = !hasMongoUri || isPlaceholder || process.env.USE_MOCK_DB === 'true';
 
-// On Vercel with a real MongoDB URI, use MongoStore. Otherwise MemoryStore for local dev.
-const sessionStore = (!useMockDb && !isPlaceholder)
+// On Vercel with a real MongoDB URI, use MongoStore. Otherwise MemoryStore for local dev or ephemeral mock.
+const sessionStore = (!useMockDb)
   ? MongoStore.create({
       mongoUrl: mongoUrl,
+      mongoOptions: { serverSelectionTimeoutMS: 5000 },
       collectionName: 'sessions',
       ttl: 7 * 24 * 60 * 60, // 7 days
     })
